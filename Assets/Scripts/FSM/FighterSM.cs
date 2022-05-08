@@ -1,0 +1,66 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class FighterSM : MonoBehaviour {
+    public FighterEntity FighterEntity;
+    public BaseState CurrentState;
+
+    // States
+    public State_BasicIdle idle;
+    public State_BasicMove move;
+    public State_BasicAttack attack;
+
+    public Vector3 MovePosition = Vector3.zero;
+
+    void Start() {
+        CurrentState = idle;
+        CurrentState.EnterState(this);
+    }
+
+    void Update() {
+        CurrentState.UpdateState(this);
+        Vector3 Target = new Vector3(FighterEntity.EnemyFighter.transform.position.x, 0, FighterEntity.EnemyFighter.transform.position.z);
+        this.transform.LookAt(Target);
+        MouseMovement();
+    }
+
+    public void SwitchState(BaseState _State) {
+        Debug.Log("Switch to " + _State);
+        CurrentState = _State;
+        _State.EnterState(this);
+
+    }
+
+    private void OnGUI() {
+        string content = CurrentState != null ? CurrentState.Name : "(no current state)";
+        GUILayout.Label($"<color='black'><size=40>{content}</size></color>");
+    }
+
+    void OnDrawGizmos() {
+        UnityEditor.Handles.color = Color.green;
+        UnityEditor.Handles.DrawLine(this.transform.position, MovePosition);
+        UnityEditor.Handles.DrawWireDisc(FighterEntity.EnemyFighter.transform.position, Vector3.up, FighterEntity.MainWeapon.AttackRange);
+    }
+
+    void MouseMovement() {
+        if (Input.GetMouseButtonDown(0)) {
+            MovePosition = Vector3.zero;
+            MovePosition = GetPositionOfClick();
+            SwitchState(move);
+        }
+    }
+
+    public Vector3 GetPositionOfClick() {
+        Plane plane = new Plane(Vector3.up, 0);
+        float distance;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Debug.DrawRay(ray.origin, ray.direction, Color.cyan, 1f);
+
+        if (plane.Raycast(ray, out distance)) {
+            MovePosition = new Vector3(ray.GetPoint(distance).x, 0, ray.GetPoint(distance).z);
+            return MovePosition;
+        }
+        return Vector3.zero;
+    }
+}
