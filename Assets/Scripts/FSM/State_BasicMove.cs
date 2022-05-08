@@ -24,8 +24,7 @@ public class State_BasicMove : BaseState {
     public Tween MoveToPosition(FighterSM _FighterSM, Vector3 _EndPoint) {
         _EndPoint = new Vector3(_EndPoint.x, 0f, _EndPoint.z);
         // temps = dist / vitesse
-        float MoveTime = Mathf.Abs(Vector3.Distance(_FighterSM.transform.position, _EndPoint) / _FighterSM.FighterEntity.MoveSpeed);
+        float MoveTime = Mathf.Abs(Vector3.Distance(_FighterSM.transform.position, _EndPoint) / _FighterSM.FighterEntity.ComputedMoveSpeed);
         return Tween = _FighterSM.transform.DOMove(_EndPoint, MoveTime).SetEase(Ease.InOutExpo);
     }
-
 }

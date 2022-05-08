@@ -11,31 +11,25 @@ public class FighterEntity : MonoBehaviour {
     public FighterEntity EnemyFighter;
 
     [Header("Stats")]
-    public int CurrentHealth;
-    public int MaxHealth;
-    public float MoveSpeed;
-    public float MoveRange;
+    public int ComputedCurrentHealth;
+    public int ComputedMaxHealth;
+    public float ComputedMoveSpeed;
 
     public WeaponTemplate MainWeapon;
     public float CountdownMainWeapon;
 
     public Tween MovementTween;
 
-    void Start() {
-        SetupEntity(FighterTemplate);
-    }
-
-    void Update() {
-        // MainWeaponCycle();
-        
-    }
-
 
 
     public void SetupEntity(FighterTemplate _Template) {
-        MaxHealth = _Template.HealthPoints;
-        CurrentHealth = MaxHealth;
-        MoveSpeed = _Template.MoveSpeed;
+        // Bind FSM
+        FighterSM = this.GetComponent<FighterSM>();
+        // Computed Stats
+        ComputedMaxHealth = _Template.HealthPoints;
+        ComputedCurrentHealth = ComputedMaxHealth;
+        ComputedMoveSpeed = _Template.MoveSpeed;
         CountdownMainWeapon = MainWeapon.AttackSpeed;
+
     }
 }

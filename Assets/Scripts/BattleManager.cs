@@ -9,16 +9,31 @@ public class BattleManager : MonoBehaviour {
     public GameObject FighterPrefab;
 
     public Rect Area = new Rect();
-    public FighterEntity Entity1;
-    public FighterEntity Entity2;
+    public FighterEntity FighterA;
+    public FighterEntity FighterB;
 
+    public Transform StartingPosA;
+    public Transform StartingPosB;
+
+    public FighterTemplate TestFighterA;
+    public FighterTemplate TestFighterB;
+
+    void Start() {
+        NewBattle(TestFighterA, TestFighterB);
+    }
 
     [Button("Start Battle")]
     public void NewBattle(FighterTemplate _FighterA, FighterTemplate _FighterB) { // add seed
         Debug.LogWarning("<<< New battle >>>");
-        // instantier les fighters
-        // setup fighters A & B
-        // Passer les fighters en fight state
+
+        FighterA = Instantiate(FighterPrefab, StartingPosA).GetComponent<FighterEntity>();
+        FighterB = Instantiate(FighterPrefab, StartingPosB).GetComponent<FighterEntity>();
+        FighterA.BattleManager = this;
+        FighterB.BattleManager = this;
+        FighterA.EnemyFighter = FighterB;
+        FighterB.EnemyFighter = FighterA;
+        FighterA.SetupEntity(_FighterA);
+        FighterB.SetupEntity(_FighterB);
     }
 
     void OnDrawGizmos() {
