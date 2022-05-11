@@ -6,6 +6,8 @@ using DG.Tweening;
 using Sirenix.OdinInspector;
 
 public class BattleManager : MonoBehaviour {
+
+    public GUIManager GUIManager;
     public GameObject FighterPrefab;
 
     public Rect Area = new Rect();
@@ -34,6 +36,9 @@ public class BattleManager : MonoBehaviour {
         FighterB.EnemyFighter = FighterA;
         FighterA.SetupEntity(_FighterA);
         FighterB.SetupEntity(_FighterB);
+        GUIManager.PlayerHealthBar.SetupHealthBar(FighterA);
+        GUIManager.EnemyHealthBar.SetupHealthBar(FighterB);
+
     }
 
     void OnDrawGizmos() {

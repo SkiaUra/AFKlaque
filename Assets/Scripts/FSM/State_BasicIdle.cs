@@ -29,11 +29,11 @@ public class State_BasicIdle : BaseState {
     }
 
     public void MainWeaponCycle(FighterSM _FighterSM) {
-        if (_FighterSM.FighterEntity.CountdownMainWeapon <= 0f) {
+        if (_FighterSM.FighterEntity.MainWeaponCountdown <= 0f) {
             _FighterSM.SwitchState(_FighterSM.attack);
-            _FighterSM.FighterEntity.CountdownMainWeapon = _FighterSM.FighterEntity.MainWeapon.AttackSpeed;
+            _FighterSM.FighterEntity.MainWeaponCountdown = _FighterSM.FighterEntity.MainWeapon.AttackSpeed;
         }
-        _FighterSM.FighterEntity.CountdownMainWeapon -= Time.deltaTime;
+        _FighterSM.FighterEntity.MainWeaponCountdown -= Time.deltaTime;
     }
 
     void SeekValidedestination(FighterSM _FighterSM, float radiusMin, float radiusMax) {
