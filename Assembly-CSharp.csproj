@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{d75ecc61-39f2-c146-f34d-774873b44a7c}</ProjectGuid>
+    <ProjectGuid>{1f8868ea-80a3-da27-17a3-e7bbd78f8b25}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -46,7 +46,32 @@
      <Compile Include="Assets\PostProcess\PixelisationPPSSettings.cs" />
      <Compile Include="Assets\Scripts\FSM\FighterSM.cs" />
      <Compile Include="Assets\Scripts\BattleManager.cs" />
+     <Compile Include="Assets\HealthBarController.cs" />
+     <Compile Include="Assets\GUIManager.cs" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+     <None Include="Assets\Shaders\RampShader.shader" />
      <None Include="Assets\PostProcess\Pixelisation.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
+     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+     <None Include="Assets\Shaders\RampShaderAllLights.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\2021.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
@@ -291,28 +316,28 @@
         <HintPath>C:\Program Files\2021.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.OdinInspector.Editor">
-        <HintPath>F:\GitProjects\AFKladiator\Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.OdinInspector.Attributes">
-        <HintPath>F:\GitProjects\AFKladiator\Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
     </Reference>
     <Reference Include="DOTween">
-        <HintPath>F:\GitProjects\AFKladiator\Assets\Plugins\DOTween\DOTween.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Assets\Plugins\DOTween\DOTween.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Serialization.Config">
-        <HintPath>F:\GitProjects\AFKladiator\Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.Config.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.Config.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Utilities">
-        <HintPath>F:\GitProjects\AFKladiator\Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-        <HintPath>F:\GitProjects\AFKladiator\Library\PackageCache\com.unity.visualscripting@1.7.6\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\PackageCache\com.unity.visualscripting@1.7.6\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Serialization">
-        <HintPath>F:\GitProjects\AFKladiator\Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Utilities.Editor">
-        <HintPath>F:\GitProjects\AFKladiator\Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
         <HintPath>C:\Program Files\2021.3.1f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
@@ -681,136 +706,136 @@
         <HintPath>C:\Program Files\2021.3.1f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow.Editor">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Notifications">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\Unity.Notifications.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.Notifications.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Profiling.Core">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\Unity.Profiling.Core.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.Profiling.Core.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.State.Editor">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.AdaptivePerformance.Simulator.Extension">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\Unity.AdaptivePerformance.Simulator.Extension.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.AdaptivePerformance.Simulator.Extension.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core.Editor">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Subsystem.Registration">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\Unity.Subsystem.Registration.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.Subsystem.Registration.dll</HintPath>
     </Reference>
     <Reference Include="UniTask.DOTween">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\UniTask.DOTween.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\UniTask.DOTween.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Editor">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\Unity.Postprocessing.Editor.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.Postprocessing.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PlasticSCM.Editor">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UniTask.Linq">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\UniTask.Linq.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\UniTask.Linq.dll</HintPath>
     </Reference>
     <Reference Include="Unity.AdaptivePerformance.UI.Editor">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\Unity.AdaptivePerformance.UI.Editor.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.AdaptivePerformance.UI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Notifications.iOS">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\Unity.Notifications.iOS.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.Notifications.iOS.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
     </Reference>
     <Reference Include="UniTask.TextMeshPro">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\UniTask.TextMeshPro.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\UniTask.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.AdaptivePerformance.Simulator.Editor">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\Unity.AdaptivePerformance.Simulator.Editor.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.AdaptivePerformance.Simulator.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Runtime">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\Unity.Postprocessing.Runtime.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.AdaptivePerformance.Editor">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\Unity.AdaptivePerformance.Editor.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.AdaptivePerformance.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Shared.Editor">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mobile.AndroidLogcat.Editor">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\Unity.Mobile.AndroidLogcat.Editor.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.Mobile.AndroidLogcat.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.AdaptivePerformance">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\Unity.AdaptivePerformance.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.AdaptivePerformance.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Notifications.Android">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\Unity.Notifications.Android.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.Notifications.Android.dll</HintPath>
     </Reference>
     <Reference Include="UniTask">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\UniTask.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\UniTask.dll</HintPath>
     </Reference>
     <Reference Include="Unity.AdaptivePerformance.Profiler.Editor">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\Unity.AdaptivePerformance.Profiler.Editor.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.AdaptivePerformance.Profiler.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UniTask.Addressables">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\UniTask.Addressables.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\UniTask.Addressables.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
-        <HintPath>F:\GitProjects\AFKladiator\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
+        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{fa2a644b-7972-c56c-6823-028200b2947a}</Project>
+      <Project>{d30c9521-6a47-3be6-4cdd-9309873332e8}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
     </ProjectReference>
     <ProjectReference Include="AmplifyShaderEditor.csproj">
-      <Project>{bb3a19cb-3833-6a2e-6659-dbe2f06d272a}</Project>
+      <Project>{00b8262e-1a1a-fdef-415f-0f5f4d2148e9}</Project>
       <Name>AmplifyShaderEditor</Name>
     </ProjectReference>
     <ProjectReference Include="AmplifyShaderEditor.Samples.BuiltIn.csproj">
-      <Project>{8b946c28-1376-c0f6-efac-81d4974d6edc}</Project>
+      <Project>{036d28bf-2757-4998-4e03-824b5ee3e4e1}</Project>
       <Name>AmplifyShaderEditor.Samples.BuiltIn</Name>
     </ProjectReference>
     <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.csproj">
-      <Project>{4b18a24b-b325-7943-e433-76f5c5783b21}</Project>
+      <Project>{efb75eb2-48c7-9194-2de5-5c9d6298fedd}</Project>
       <Name>Sirenix.OdinInspector.CompatibilityLayer</Name>
     </ProjectReference>
     <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj">
-      <Project>{b60b8021-5d90-15f8-5d0c-06336dc8aa86}</Project>
+      <Project>{1d73c148-bdee-1579-ce04-79febd11c8ac}</Project>
       <Name>Sirenix.OdinInspector.CompatibilityLayer.Editor</Name>
     </ProjectReference>
   </ItemGroup>
