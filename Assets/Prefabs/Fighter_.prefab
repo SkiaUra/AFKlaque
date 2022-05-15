@@ -151,7 +151,7 @@ MonoBehaviour:
   ComputedCurrentHealth: 0
   ComputedMaxHealth: 0
   ComputedMoveSpeed: 0
-  MainWeapon: {fileID: 11400000, guid: 52715340565783e41be79020686b2c24, type: 2}
+  MainWeapon: {fileID: 0}
   MainWeaponDamage: 0
   MainWeaponRange: 0
   MainWeaponCountdown: 0
