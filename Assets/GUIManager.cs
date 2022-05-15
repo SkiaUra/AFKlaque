@@ -9,5 +9,6 @@ public class GUIManager : MonoBehaviour {
     public HealthBarController PlayerHealthBar;
     public HealthBarController EnemyHealthBar;
 
+    public PopupDamageController popupDamage;
 
 }
