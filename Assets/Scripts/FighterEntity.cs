@@ -17,7 +17,7 @@ public class FighterEntity : MonoBehaviour {
 
     [Header("Main Weapon")]
     public WeaponTemplate MainWeapon;
-    public float MainWeaponDamage;
+    public int MainWeaponDamage;
     public float MainWeaponRange;
     public float MainWeaponCountdown;
 
@@ -31,13 +31,14 @@ public class FighterEntity : MonoBehaviour {
         FighterSM.idle = Instantiate(_Template.idle);
         FighterSM.attack = Instantiate(_Template.attack);
         FighterSM.move = Instantiate(_Template.move);
+
         // Computed Stats
         ComputedMaxHealth = _Template.Health;
         ComputedCurrentHealth = ComputedMaxHealth;
         ComputedMoveSpeed = _Template.MoveSpeed;
-        MainWeaponCountdown = MainWeapon.AttackSpeed;
 
         // Main Weapon
+        MainWeapon = _Template.MainWeapon;
         MainWeaponDamage = MainWeapon.damage;
         MainWeaponRange = MainWeapon.AttackRange;
         MainWeaponCountdown = MainWeapon.AttackSpeed;

@@ -17,6 +17,7 @@ public class State_BasicAttack : BaseState {
             float dist = Vector3.Distance(_FighterSM.FighterEntity.transform.position, _FighterSM.FighterEntity.EnemyFighter.transform.position);
             if (Mathf.Abs(dist - _FighterSM.FighterEntity.MainWeapon.AttackRange) <= 0.1f) {
                 // HIT
+                _FighterSM.FighterEntity.EnemyFighter.ComputedCurrentHealth -= _FighterSM.FighterEntity.MainWeaponDamage;
                 Debug.Log("=> Attack Hit !!");
             } else {
                 // FAIL
