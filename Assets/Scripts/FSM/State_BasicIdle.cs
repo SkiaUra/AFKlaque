@@ -16,7 +16,7 @@ public class State_BasicIdle : BaseState {
 
     public override void UpdateState(FighterSM _FighterSM) { // Do things
         if (CurrentMovementCooldown <= 0) {
-            SeekValidedestination(_FighterSM, MinMoveRange, MaxMoveRange);
+            SeekValidedestination(_FighterSM, MaxMoveRange);
             CurrentMovementCooldown = MovementCooldown;
             _FighterSM.SwitchState(_FighterSM.move);
         }
@@ -36,20 +36,26 @@ public class State_BasicIdle : BaseState {
         _FighterSM.FighterEntity.MainWeaponCountdown -= Time.deltaTime;
     }
 
-    void SeekValidedestination(FighterSM _FighterSM, float radiusMin, float radiusMax) {
-        Rect Bounds = _FighterSM.FighterEntity.BattleManager.Area;
+    void SeekValidedestination(FighterSM _FighterSM, float radiusMax) {
+        Vector3 _ArenaCenter = _FighterSM.FighterEntity.BattleManager.ArenaCenter;
+        float _ArenaSize = _FighterSM.FighterEntity.BattleManager.ArenaRadius;
+        // Rect Bounds = _FighterSM.FighterEntity.BattleManager.Area;
+
         Vector3 randomDirection = Random.insideUnitSphere * radiusMax; // get direction
         posCheck = randomDirection;
 
-        Vector3 calculatedPosition = _FighterSM.transform.position + randomDirection;
+        Vector3 PickedPosition = _FighterSM.transform.position + randomDirection;
+        PickedPosition = new Vector3(PickedPosition.x, 0, PickedPosition.z);
 
-        calculatedPosition = new Vector3(
-            Mathf.Clamp(calculatedPosition.x, -0.5f * Bounds.size.x, 0.5f * Bounds.size.x),
-            0f,
-            Mathf.Clamp(calculatedPosition.z, -0.5f * Bounds.size.y, 0.5f * Bounds.size.y));// on XZ only
-
-        _FighterSM.MovePosition = calculatedPosition;
+        // Is picked position inside arena bounds ?
+        if (Vector3.Distance(PickedPosition, _ArenaCenter) < _ArenaSize) {
+            // valid position
+            _FighterSM.MovePosition = PickedPosition;
+        } else {
+            // wrong position
+            Vector3 TowardArenaCenter = _ArenaCenter - PickedPosition;
+            float OutRange = Vector3.Distance(PickedPosition, _ArenaCenter) - _ArenaSize;
+            PickedPosition = PickedPosition + TowardArenaCenter * OutRange;
+        }
     }
-
-
 }

@@ -10,7 +10,8 @@ public class BattleManager : MonoBehaviour {
     public GUIManager GUIManager;
     public GameObject FighterPrefab;
 
-    public Rect Area = new Rect();
+    public Vector3 ArenaCenter;
+    public float ArenaRadius;
     public FighterEntity FighterA;
     public FighterEntity FighterB;
 
@@ -43,7 +44,7 @@ public class BattleManager : MonoBehaviour {
 
     void OnDrawGizmos() {
         UnityEditor.Handles.color = Color.white;
-        UnityEditor.Handles.DrawWireCube(Vector3.zero, new Vector3(Area.width, 0f, Area.height));
+        UnityEditor.Handles.DrawWireDisc(ArenaCenter, Vector3.up, ArenaRadius);
     }
 
 }
