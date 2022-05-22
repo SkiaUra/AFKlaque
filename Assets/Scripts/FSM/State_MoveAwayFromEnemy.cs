@@ -1,8 +1,8 @@
 using UnityEngine;
 using DG.Tweening;
 
-[CreateAssetMenu(menuName = "State/Movement/RandomMovement")]
-public class State_BasicMove : BaseState {
+[CreateAssetMenu(menuName = "State/Movement/MoveAwayEnemy")]
+public class State_MoveAwayFromEnemy : BaseState {
 
     Tween Tween;
 
@@ -19,29 +19,32 @@ public class State_BasicMove : BaseState {
     }
 
     public override void ExitState(FighterSM _FighterSM) { // End things if needed
+
         _FighterSM.MakeNewDecision();
     }
 
     // CUSTOM METHODS //
 
     public Tween MoveToPosition(FighterSM _FighterSM, Vector3 _EndPoint) {
-        _EndPoint = new Vector3(_EndPoint.x, 0f, _EndPoint.z);
+        Vector3 PosXZ = new Vector3(_EndPoint.x, 0f, _EndPoint.z);
         // temps = dist / vitesse
-        float MoveTime = Mathf.Abs(Vector3.Distance(_FighterSM.transform.position, _EndPoint) / _FighterSM.FighterEntity.ComputedMoveSpeed);
-        return Tween = _FighterSM.transform.DOMove(_EndPoint, MoveTime).SetEase(Ease.InOutExpo);
+        float MoveTime = Mathf.Abs(Vector3.Distance(_FighterSM.transform.position, PosXZ) / _FighterSM.FighterEntity.ComputedMoveSpeed);
+        return Tween = _FighterSM.transform.DOMove(PosXZ, MoveTime).SetEase(Ease.InOutExpo);
     }
 
     Vector3 SeekValidedestination(FighterSM _FighterSM, float radiusMax) {
         FighterEntity e = _FighterSM.FighterEntity;
 
-        Vector3 randomDirection = Random.insideUnitSphere * radiusMax; // get direction
+        Vector3 AwayFromEnemy = Vector3.Normalize(e.transform.position - e.EnemyFighter.transform.position);
 
-        Vector3 PickedPosition = _FighterSM.transform.position + randomDirection;
+        Vector3 PickedPosition = _FighterSM.transform.position + AwayFromEnemy;
 
-        Vector3 _ArenaCenter = e.BattleManager.ArenaCenter;
-        float _ArenaSize = e.BattleManager.ArenaRadius;
-        // Is picked position inside arena bounds ?
-        if (Vector3.Distance(PickedPosition, _ArenaCenter) < _ArenaSize) {
+        // Not outside Arena
+        Vector3 _ArenaCenter = _FighterSM.FighterEntity.BattleManager.ArenaCenter;
+        float _ArenaSize = _FighterSM.FighterEntity.BattleManager.ArenaRadius;
+        float dist = Vector3.Distance(PickedPosition, _ArenaCenter);
+
+        if (dist < _ArenaSize) {
             // Valid position, do nothing
         } else {
             // Wrong position

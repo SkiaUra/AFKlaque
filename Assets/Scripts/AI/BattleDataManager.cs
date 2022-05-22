@@ -17,6 +17,7 @@ public enum BATTLEDATA {
     HP = 0,
     PercentHP = 1,
     MoveDelay = 2,
+    MoveRange = 3,
 
     // Weapons
     MainWeaponDelay = 10,
@@ -49,7 +50,7 @@ public class BattleDataManager : MonoBehaviour {
         RebuildBattleDataList();
     }
 
-    void Update() {
+    void LateUpdate() {
 
         foreach (BattleData item in BattleDatas) {
             item.DataValue = UpdateData(item);
@@ -67,10 +68,11 @@ public class BattleDataManager : MonoBehaviour {
                 return Fighter.ComputedCurrentHealth;
             case BATTLEDATA.MoveDelay:
                 return Fighter.ComputedMoveDelay;
-
+            case BATTLEDATA.MoveRange:
+                return Fighter.ComputedMoveRange;
             // WEAPONS
             case BATTLEDATA.MainWeaponDelay:
-                return Fighter.ComputedMoveDelay;
+                return Fighter.MainWeaponCountdown;
             case BATTLEDATA.MainWeaponRange:
                 return Fighter.MainWeaponRange;
 

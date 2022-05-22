@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 
@@ -17,6 +16,9 @@ public class BattleManager : MonoBehaviour {
 
     public Transform StartingPosA;
     public Transform StartingPosB;
+
+    public Material MaterialA;
+    public Material MaterialB;
 
     public FighterTemplate TestFighterA;
     public FighterTemplate TestFighterB;
@@ -35,6 +37,8 @@ public class BattleManager : MonoBehaviour {
         FighterB.BattleManager = this;
         FighterA.EnemyFighter = FighterB;
         FighterB.EnemyFighter = FighterA;
+        FighterA.Material = MaterialA;
+        FighterB.Material = MaterialB;
         FighterA.SetupEntity(_FighterA);
         FighterB.SetupEntity(_FighterB);
         GUIManager.PlayerHealthBar.SetupHealthBar(FighterA);

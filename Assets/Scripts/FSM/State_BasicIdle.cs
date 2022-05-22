@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "State/BasicIdle")]
+[CreateAssetMenu(menuName = "State/BasicIdle")]
 public class State_BasicIdle : BaseState {
 
     public override void EnterState(FighterSM _FighterSM) { // Do enter shit once
