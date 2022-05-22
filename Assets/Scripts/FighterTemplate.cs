@@ -7,6 +7,8 @@ public class FighterTemplate : ScriptableObject {
 
     public int Health = 0;
     public float MoveSpeed = 0.5f;
+    public float MoveDelay = 1f;
+    public float MoveRange = 0.5f;
 
     [Header("FSM setup")]
     public State_BasicIdle idle;

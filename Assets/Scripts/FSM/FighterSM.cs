@@ -1,36 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class FighterSM : MonoBehaviour {
     public FighterEntity FighterEntity;
+    public BrainManager BrainManager;
     public BaseState CurrentState;
 
     // States
     public State_BasicIdle idle;
-    public State_BasicMove move;
-    public State_BasicAttack attack;
 
     public Vector3 MovePosition = Vector3.zero;
 
     void Start() {
-        CurrentState = idle;
-        CurrentState.EnterState(this);
+        MakeNewDecision();
     }
 
     void Update() {
         CurrentState.UpdateState(this);
+        // Look At
         Vector3 Target = new Vector3(FighterEntity.EnemyFighter.transform.position.x, 0, FighterEntity.EnemyFighter.transform.position.z);
         this.transform.LookAt(Target);
-        MouseMovement();
+        // MouseMovement();
     }
 
     public void SwitchState(BaseState _State) {
         Debug.Log("Switch to " + _State);
         CurrentState = _State;
         _State.EnterState(this);
-
     }
+
+    public void MakeNewDecision() {
+        // get a decision and play it
+        BaseState decision = BrainManager.PickAction();
+        SwitchState(decision);
+    }
+
+
+    // Gizmos //
 
     private void OnGUI() {
         string content = CurrentState != null ? CurrentState.Name : "(no current state)";
@@ -40,14 +48,14 @@ public class FighterSM : MonoBehaviour {
     void OnDrawGizmos() {
         UnityEditor.Handles.color = Color.green;
         UnityEditor.Handles.DrawLine(this.transform.position, MovePosition);
-        UnityEditor.Handles.DrawWireDisc(FighterEntity.EnemyFighter.transform.position, Vector3.up, FighterEntity.MainWeapon.AttackRange);
+        // UnityEditor.Handles.DrawWireDisc(FighterEntity.EnemyFighter.transform.position, Vector3.up, FighterEntity.MainWeapon.AttackRange);
     }
 
     void MouseMovement() {
         if (Input.GetMouseButtonDown(0)) {
             MovePosition = Vector3.zero;
             MovePosition = GetPositionOfClick();
-            SwitchState(move);
+            // SwitchState(move);
         }
     }
 

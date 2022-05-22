@@ -8,6 +8,8 @@ using System.Linq;
 public class Action {
     [VerticalGroup("Action"), LabelWidth(50)]
     public string Name;
+    [VerticalGroup("Action"), LabelWidth(50)]
+    public BaseState ActionState;
     [VerticalGroup("Action"), LabelWidth(50), ReadOnly]
     public int ActionScore;
 
@@ -19,7 +21,9 @@ public class Action {
 public class Scorer {
     public BATTLEDATA BattleData;
     [TableColumnWidth(90, false)] public Comparator Comparator;
-    [TableColumnWidth(80, false)] public float ComparedValue;
+
+    public BATTLEDATA CompBattleData;
+    [ShowIf("@this.CompBattleData == BATTLEDATA.Float")] public float CompValue;
     [TableColumnWidth(50, false)] public int Score;
 }
 
@@ -29,7 +33,7 @@ public enum Comparator {
     SUPERIOR = 2
 }
 
-[ExecuteInEditMode]
+// [ExecuteInEditMode]
 public class BrainManager : MonoBehaviour {
     public BattleDataManager BDM;
 
@@ -41,7 +45,7 @@ public class BrainManager : MonoBehaviour {
         foreach (Action action in Actions) {
             UpdateAction(action);
         }
-        if (Input.GetMouseButtonDown(0)) PickAction();
+        // if (Input.GetMouseButtonDown(0)) PickAction();
     }
 
 
@@ -54,21 +58,37 @@ public class BrainManager : MonoBehaviour {
             float ValueFromBDM = BDM.BattleDatas.First(t => t.DataType == scorer.BattleData).DataValue;
             switch (scorer.Comparator) {
                 case Comparator.EQUAL:
-                    if (ValueFromBDM == scorer.ComparedValue) _Action.ActionScore += scorer.Score;
+                    if (scorer.CompBattleData == BATTLEDATA.Float) {
+                        if (ValueFromBDM == scorer.CompValue) _Action.ActionScore += scorer.Score;
+                    } else {
+                        float v = BDM.BattleDatas.First(t => t.DataType == scorer.CompBattleData).DataValue;
+                        if (ValueFromBDM == v) _Action.ActionScore += scorer.Score;
+                    }
                     break;
                 case Comparator.SUPERIOR:
-                    if (ValueFromBDM > scorer.ComparedValue) _Action.ActionScore += scorer.Score;
+                    if (scorer.CompBattleData == BATTLEDATA.Float) {
+                        if (ValueFromBDM > scorer.CompValue) _Action.ActionScore += scorer.Score;
+                    } else {
+                        float v = BDM.BattleDatas.First(t => t.DataType == scorer.CompBattleData).DataValue;
+                        if (ValueFromBDM > v) _Action.ActionScore += scorer.Score;
+                    }
                     break;
                 case Comparator.INFERIOR:
-                    if (ValueFromBDM < scorer.ComparedValue) _Action.ActionScore += scorer.Score;
+                    if (scorer.CompBattleData == BATTLEDATA.Float) {
+                        if (ValueFromBDM < scorer.CompValue) _Action.ActionScore += scorer.Score;
+                    } else {
+                        float v = BDM.BattleDatas.First(t => t.DataType == scorer.CompBattleData).DataValue;
+                        if (ValueFromBDM < v) _Action.ActionScore += scorer.Score;
+                    }
                     break;
             }
         }
     }
 
-    public void PickAction() {
+    public BaseState PickAction() {
         // return the name of the action
-        string result = Actions.OrderByDescending(t => t.ActionScore).FirstOrDefault().Name;
-        Debug.Log(result);
+        Action PickedAction = Actions.OrderByDescending(t => t.ActionScore).FirstOrDefault();
+        Debug.Log(PickedAction.Name + " score " + PickedAction.ActionScore);
+        return PickedAction.ActionState;
     }
 }
