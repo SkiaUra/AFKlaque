@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e256d087d142fb04daae9ecccc53d111, type: 3}
   m_Name: Test_Weapon
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 2
   AttackSpeed: 5
   AttackRange: 0.5

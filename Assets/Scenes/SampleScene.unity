@@ -476,6 +476,8 @@ GameObject:
   m_Component:
   - component: {fileID: 220480466}
   - component: {fileID: 220480465}
+  - component: {fileID: 220480469}
+  - component: {fileID: 220480468}
   - component: {fileID: 220480467}
   m_Layer: 0
   m_Name: FighterA
@@ -498,11 +500,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BattleManager: {fileID: 750051501}
   FighterTemplate: {fileID: 11400000, guid: e898946f0c01c15499a70496c64755a0, type: 2}
-  FighterSM: {fileID: 220480467}
   EnemyFighter: {fileID: 1161286787}
+  FighterSM: {fileID: 0}
   ComputedCurrentHealth: 0
   ComputedMaxHealth: 0
   ComputedMoveSpeed: 0
+  ComputedMoveDelay: 0
   MainWeapon: {fileID: 11400000, guid: 52715340565783e41be79020686b2c24, type: 2}
   MainWeaponDamage: 0
   MainWeaponRange: 0
@@ -521,9 +524,53 @@ Transform:
   m_Children:
   - {fileID: 1920026409}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &220480467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220480464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e02c16ea0d766f4bb384473b7317d42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Fighter: {fileID: 220480465}
+  BattleDatas:
+  - DataType: 0
+    DataValue: 0
+--- !u!114 &220480468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220480464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e7374a3e083f940bb01500f275ff86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BDM: {fileID: 220480467}
+  Actions:
+  - Name: 
+    ActionState: {fileID: 0}
+    ActionScore: 0
+    Scorers:
+    - BattleData: 0
+      Comparator: 0
+      CompBattleData: 0
+      CompValue: 0
+      Score: 0
+    - BattleData: 0
+      Comparator: 0
+      CompBattleData: 0
+      CompValue: 0
+      Score: 0
+--- !u!114 &220480469
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -535,11 +582,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fdd877356e8abd4c88aecf9f1ca7e1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
   FighterEntity: {fileID: 220480465}
+  BrainManager: {fileID: 220480468}
   CurrentState: {fileID: 0}
-  idle: {fileID: 11400000, guid: 2fc7026514c30f7458ce13c1e83fd1cf, type: 2}
-  move: {fileID: 11400000, guid: 0676d117c3f726c45ba0f34b0fe5922c, type: 2}
-  attack: {fileID: 11400000, guid: f1b06b28076a03f43b1d4b3b9d3cb012, type: 2}
+  idle: {fileID: 0}
   MovePosition: {x: 0, y: 0, z: 0}
 --- !u!1 &250068444
 GameObject:
@@ -1711,7 +1766,7 @@ MonoBehaviour:
   StartingPosA: {fileID: 171252147}
   StartingPosB: {fileID: 1167327761}
   TestFighterA: {fileID: 11400000, guid: e898946f0c01c15499a70496c64755a0, type: 2}
-  TestFighterB: {fileID: 11400000, guid: e898946f0c01c15499a70496c64755a0, type: 2}
+  TestFighterB: {fileID: 11400000, guid: b489b3f198523ad4a8a6d40fd5d95ebf, type: 2}
 --- !u!4 &750051502
 Transform:
   m_ObjectHideFlags: 0
@@ -2595,7 +2650,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1119568389
 GameObject:
@@ -2665,11 +2720,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fdd877356e8abd4c88aecf9f1ca7e1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
   FighterEntity: {fileID: 1161286787}
+  BrainManager: {fileID: 0}
   CurrentState: {fileID: 0}
   idle: {fileID: 11400000, guid: d630328196f5b3f4cb7f5bfeddfe4028, type: 2}
-  move: {fileID: 11400000, guid: 9259b2688e5ab9d4787a95fbb57bc664, type: 2}
-  attack: {fileID: 11400000, guid: abe946cb4801c6a428e127c48860e995, type: 2}
   MovePosition: {x: 0, y: 0, z: 0}
 --- !u!114 &1161286787
 MonoBehaviour:
@@ -2685,11 +2748,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BattleManager: {fileID: 750051501}
   FighterTemplate: {fileID: 11400000, guid: e898946f0c01c15499a70496c64755a0, type: 2}
-  FighterSM: {fileID: 1161286786}
   EnemyFighter: {fileID: 220480465}
+  FighterSM: {fileID: 0}
   ComputedCurrentHealth: 0
   ComputedMaxHealth: 0
   ComputedMoveSpeed: 0
+  ComputedMoveDelay: 0
   MainWeapon: {fileID: 11400000, guid: 52715340565783e41be79020686b2c24, type: 2}
   MainWeaponDamage: 0
   MainWeaponRange: 0
@@ -2708,7 +2772,7 @@ Transform:
   m_Children:
   - {fileID: 1682700356}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1167327760
 GameObject:
@@ -3710,7 +3774,7 @@ RectTransform:
   - {fileID: 5244210}
   - {fileID: 896665099}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

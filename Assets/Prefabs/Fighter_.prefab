@@ -108,6 +108,8 @@ GameObject:
   - component: {fileID: 1774566327658773835}
   - component: {fileID: 3234323843196674006}
   - component: {fileID: 3339747698009868403}
+  - component: {fileID: 6466552234946245583}
+  - component: {fileID: 1297817753592772917}
   m_Layer: 0
   m_Name: Fighter_
   m_TagString: Untagged
@@ -146,11 +148,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BattleManager: {fileID: 0}
   FighterTemplate: {fileID: 11400000, guid: e898946f0c01c15499a70496c64755a0, type: 2}
-  FighterSM: {fileID: 3339747698009868403}
   EnemyFighter: {fileID: 0}
+  FighterSM: {fileID: 3339747698009868403}
   ComputedCurrentHealth: 0
   ComputedMaxHealth: 0
   ComputedMoveSpeed: 0
+  ComputedMoveDelay: 0
   MainWeapon: {fileID: 0}
   MainWeaponDamage: 0
   MainWeaponRange: 0
@@ -162,17 +165,96 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4511090906150704874}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9fdd877356e8abd4c88aecf9f1ca7e1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   FighterEntity: {fileID: 3234323843196674006}
+  BrainManager: {fileID: 6466552234946245583}
   CurrentState: {fileID: 0}
-  idle: {fileID: 0}
-  move: {fileID: 0}
-  attack: {fileID: 0}
+  idle: {fileID: 11400000, guid: 2fc7026514c30f7458ce13c1e83fd1cf, type: 2}
   MovePosition: {x: 0, y: 0, z: 0}
+--- !u!114 &6466552234946245583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4511090906150704874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e7374a3e083f940bb01500f275ff86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BDM: {fileID: 1297817753592772917}
+  Actions:
+  - Name: Do Nothing
+    ActionState: {fileID: 11400000, guid: 2fc7026514c30f7458ce13c1e83fd1cf, type: 2}
+    ActionScore: 0
+    Scorers:
+    - BattleData: 1
+      Comparator: 2
+      CompBattleData: -1
+      CompValue: 0
+      Score: 20
+  - Name: Basic Movement
+    ActionState: {fileID: 11400000, guid: 0676d117c3f726c45ba0f34b0fe5922c, type: 2}
+    ActionScore: 0
+    Scorers:
+    - BattleData: 2
+      Comparator: 1
+      CompBattleData: -1
+      CompValue: 0
+      Score: 40
+  - Name: Basic Attack
+    ActionState: {fileID: 11400000, guid: f1b06b28076a03f43b1d4b3b9d3cb012, type: 2}
+    ActionScore: 0
+    Scorers:
+    - BattleData: 40
+      Comparator: 1
+      CompBattleData: 11
+      CompValue: 0
+      Score: 20
+    - BattleData: 10
+      Comparator: 1
+      CompBattleData: -1
+      CompValue: 0
+      Score: 30
+--- !u!114 &1297817753592772917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4511090906150704874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e02c16ea0d766f4bb384473b7317d42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Fighter: {fileID: 3234323843196674006}
+  BattleDatas:
+  - DataType: 0
+    DataValue: 0
+  - DataType: 1
+    DataValue: 0
+  - DataType: 2
+    DataValue: 0
+  - DataType: 10
+    DataValue: 0
+  - DataType: 11
+    DataValue: 0
+  - DataType: 15
+    DataValue: 0
+  - DataType: 20
+    DataValue: 0
+  - DataType: 21
+    DataValue: 0
+  - DataType: 40
+    DataValue: 0
+  - DataType: 41
+    DataValue: 0
 --- !u!1 &9156856352979949587
 GameObject:
   m_ObjectHideFlags: 0

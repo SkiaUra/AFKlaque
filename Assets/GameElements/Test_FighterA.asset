@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35227892a74b0ac428d26f0928b0f49a, type: 3}
+  m_Name: Test_FighterA
+  m_EditorClassIdentifier: 
+  Health: 10
+  MoveSpeed: 2
+  idle: {fileID: 11400000, guid: 2fc7026514c30f7458ce13c1e83fd1cf, type: 2}
+  move: {fileID: 11400000, guid: 0676d117c3f726c45ba0f34b0fe5922c, type: 2}
+  attack: {fileID: 11400000, guid: f1b06b28076a03f43b1d4b3b9d3cb012, type: 2}
+  MainWeapon: {fileID: 11400000, guid: 52715340565783e41be79020686b2c24, type: 2}
+  OffWeapon: {fileID: 0}
