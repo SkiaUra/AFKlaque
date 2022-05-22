@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35227892a74b0ac428d26f0928b0f49a, type: 3}
   m_Name: Test_FighterA
   m_EditorClassIdentifier: 
-  Health: 10
+  Health: 20
   MoveSpeed: 2
+  MoveDelay: 1
+  MoveRange: 0.5
   idle: {fileID: 11400000, guid: 2fc7026514c30f7458ce13c1e83fd1cf, type: 2}
   move: {fileID: 11400000, guid: 0676d117c3f726c45ba0f34b0fe5922c, type: 2}
   attack: {fileID: 11400000, guid: f1b06b28076a03f43b1d4b3b9d3cb012, type: 2}

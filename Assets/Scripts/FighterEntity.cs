@@ -11,6 +11,8 @@ public class FighterEntity : MonoBehaviour {
     public FighterEntity EnemyFighter;
     public FighterSM FighterSM;
 
+    public Material Material;
+
     [Header("Stats")]
     public int ComputedCurrentHealth;
     public int ComputedMaxHealth;
@@ -32,6 +34,11 @@ public class FighterEntity : MonoBehaviour {
     public void SetupEntity(FighterTemplate _Template) {
         // Bind FSM
         FighterSM = this.GetComponent<FighterSM>();
+
+        // Setup Materials
+        foreach (Transform MeshChild in this.transform) {
+            MeshChild.GetComponent<MeshRenderer>().material = Material;
+        }
 
         // Computed Stats
         ComputedMaxHealth = _Template.Health;

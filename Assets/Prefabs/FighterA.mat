@@ -79,7 +79,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _RimOffset: 0.352
+    - _RimOffset: 0.59
     - _ShadowIntensity: 0.323
     - _ShadowStep: 0.347
     - _SmoothnessTextureChannel: 0
@@ -91,7 +91,7 @@ Material:
     - __dirty: 0
     m_Colors:
     - _ASEOutlineColor: {r: 0.078382835, g: 0.049928803, b: 0.3207547, a: 0}
-    - _Color: {r: 0.9339623, g: 0.78336364, b: 0.118948035, a: 1}
+    - _Color: {r: 0.07058823, g: 0.82220894, b: 1, a: 1}
     - _EmissionColor: {r: 0.5471698, g: 0.09549662, b: 0.09549662, a: 1}
-    - _RimColor: {r: 1, g: 0.0982824, b: 0, a: 1}
+    - _RimColor: {r: 0, g: 0.60397387, b: 1, a: 1}
   m_BuildTextureStacks: []

@@ -65,7 +65,7 @@ MonoBehaviour:
     value: 1
   _Resolution:
     overrideState: 1
-    value: 512
+    value: 256
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0

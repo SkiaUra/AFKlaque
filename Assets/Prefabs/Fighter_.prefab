@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4999064417966631765}
   - component: {fileID: 4604443962029449503}
   - component: {fileID: 2028115673188055079}
-  - component: {fileID: 1875251034684263783}
   m_Layer: 0
   m_Name: Mesh
   m_TagString: Untagged
@@ -84,19 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1875251034684263783
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1303507233283813271}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4511090906150704874
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,6 +140,7 @@ MonoBehaviour:
   ComputedMaxHealth: 0
   ComputedMoveSpeed: 0
   ComputedMoveDelay: 0
+  ComputedMoveRange: 0
   MainWeapon: {fileID: 0}
   MainWeaponDamage: 0
   MainWeaponRange: 0
@@ -174,7 +161,7 @@ MonoBehaviour:
   BrainManager: {fileID: 6466552234946245583}
   CurrentState: {fileID: 0}
   idle: {fileID: 11400000, guid: 2fc7026514c30f7458ce13c1e83fd1cf, type: 2}
-  MovePosition: {x: 0, y: 0, z: 0}
+  DebugTargetMovement: {x: 0, y: 0, z: 0}
 --- !u!114 &6466552234946245583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,7 +184,7 @@ MonoBehaviour:
       Comparator: 2
       CompBattleData: -1
       CompValue: 0
-      Score: 20
+      Score: 50
   - Name: Basic Movement
     ActionState: {fileID: 11400000, guid: 0676d117c3f726c45ba0f34b0fe5922c, type: 2}
     ActionScore: 0
@@ -206,7 +193,7 @@ MonoBehaviour:
       Comparator: 1
       CompBattleData: -1
       CompValue: 0
-      Score: 40
+      Score: 60
   - Name: Basic Attack
     ActionState: {fileID: 11400000, guid: f1b06b28076a03f43b1d4b3b9d3cb012, type: 2}
     ActionScore: 0
@@ -215,12 +202,49 @@ MonoBehaviour:
       Comparator: 1
       CompBattleData: 11
       CompValue: 0
-      Score: 20
+      Score: 40
     - BattleData: 10
       Comparator: 1
       CompBattleData: -1
       CompValue: 0
-      Score: 30
+      Score: 40
+  - Name: Move Toward Enemy
+    ActionState: {fileID: 11400000, guid: 9cdab7d0d5370d14bb1b74501fd34f9d, type: 2}
+    ActionScore: 0
+    Scorers:
+    - BattleData: 2
+      Comparator: 1
+      CompBattleData: -1
+      CompValue: 0
+      Score: 50
+    - BattleData: 10
+      Comparator: 1
+      CompBattleData: -1
+      CompValue: 1
+      Score: 20
+  - Name: Move Away From Enemy
+    ActionState: {fileID: 11400000, guid: 871dec4f012824e44a35e4baf587bce2, type: 2}
+    ActionScore: 0
+    Scorers:
+    - BattleData: 10
+      Comparator: 2
+      CompBattleData: -1
+      CompValue: 2
+      Score: 40
+    - BattleData: 40
+      Comparator: 1
+      CompBattleData: 11
+      CompValue: 0
+      Score: 20
+  - Name: DEAD
+    ActionState: {fileID: 11400000, guid: 2fc7026514c30f7458ce13c1e83fd1cf, type: 2}
+    ActionScore: 0
+    Scorers:
+    - BattleData: 1
+      Comparator: 1
+      CompBattleData: -1
+      CompValue: 1
+      Score: 100
 --- !u!114 &1297817753592772917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +264,8 @@ MonoBehaviour:
   - DataType: 1
     DataValue: 0
   - DataType: 2
+    DataValue: 0
+  - DataType: 3
     DataValue: 0
   - DataType: 10
     DataValue: 0
@@ -266,7 +292,6 @@ GameObject:
   - component: {fileID: 5260457245200594351}
   - component: {fileID: 3655848607999381044}
   - component: {fileID: 5623277204164498033}
-  - component: {fileID: 3521440352928127510}
   m_Layer: 0
   m_Name: Mesh_01
   m_TagString: Untagged
@@ -339,16 +364,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3521440352928127510
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9156856352979949587}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
