@@ -46,6 +46,10 @@ public class BattleManager : MonoBehaviour {
 
     }
 
+    public void SetGameSpeed(float _Speed) {
+        Time.timeScale = _Speed;
+    }
+
     void OnDrawGizmos() {
         UnityEditor.Handles.color = Color.white;
         UnityEditor.Handles.DrawWireDisc(ArenaCenter, Vector3.up, ArenaRadius);
