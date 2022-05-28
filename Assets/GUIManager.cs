@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GUIManager : MonoBehaviour {
 
@@ -9,6 +10,5 @@ public class GUIManager : MonoBehaviour {
     public HealthBarController PlayerHealthBar;
     public HealthBarController EnemyHealthBar;
 
-    public PopupDamageController popupDamage;
-
+    public PopupDamageController PrefabPopupDamage;
 }

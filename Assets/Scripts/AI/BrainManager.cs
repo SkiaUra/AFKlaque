@@ -88,7 +88,7 @@ public class BrainManager : MonoBehaviour {
     public BaseState PickAction() {
         // return the name of the action
         Action PickedAction = Actions.OrderByDescending(t => t.ActionScore).FirstOrDefault();
-        Debug.Log(PickedAction.Name + " score " + PickedAction.ActionScore);
+        // Debug.Log(PickedAction.Name + " score " + PickedAction.ActionScore);
         return PickedAction.ActionState;
     }
 }

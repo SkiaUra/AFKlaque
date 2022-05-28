@@ -93,17 +93,14 @@ public class BattleDataManager : MonoBehaviour {
     }
 
     void RebuildBattleDataList() {
-        if (SirenixEditorGUI.ToolbarButton(EditorIcons.Refresh)) {
-            BattleDatas.Clear();
-            foreach (BATTLEDATA data in System.Enum.GetValues(typeof(BATTLEDATA))) {
-                if (data == BATTLEDATA.Float) continue;
-                BattleDatas.Add(new BattleData() {
-                    DataType = data,
-                    DataValue = 0
-                });
-            }
+        if (BattleDatas.Count > 0) BattleDatas.Clear();
+        foreach (BATTLEDATA data in System.Enum.GetValues(typeof(BATTLEDATA))) {
+            if (data == BATTLEDATA.Float) continue;
+            BattleDatas.Add(new BattleData() {
+                DataType = data,
+                DataValue = 0
+            });
         }
     }
-
 }
 

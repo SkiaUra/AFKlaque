@@ -8,6 +8,7 @@ public class State_BasicAttack : BaseState {
 
     public override void EnterState(FighterSM _FighterSM) { // Do enter shit once
         _FighterSM.FighterEntity.EnemyFighter.ComputedCurrentHealth -= _FighterSM.FighterEntity.MainWeaponDamage;
+        _FighterSM.FighterEntity.PopupDamage.Show();
         _FighterSM.FighterEntity.MainWeaponCountdown = _FighterSM.FighterEntity.MainWeapon.AttackSpeed;
     }
 

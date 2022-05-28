@@ -12,6 +12,7 @@ public class FighterEntity : MonoBehaviour {
     public FighterSM FighterSM;
 
     public Material Material;
+    public PopupDamageController PopupDamage;
 
     [Header("Stats")]
     public int ComputedCurrentHealth;
@@ -39,6 +40,9 @@ public class FighterEntity : MonoBehaviour {
         foreach (Transform MeshChild in this.transform) {
             MeshChild.GetComponent<MeshRenderer>().material = Material;
         }
+
+        PopupDamage = Instantiate(BattleManager.GUIManager.PrefabPopupDamage, BattleManager.GUIManager.transform);
+        PopupDamage.LinkedFighter = this;
 
         // Computed Stats
         ComputedMaxHealth = _Template.Health;
