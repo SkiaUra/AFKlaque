@@ -7,7 +7,8 @@ using Sirenix.OdinInspector;
 public class BattleManager : MonoBehaviour {
 
     public GUIManager GUIManager;
-    public GameObject FighterPrefab;
+    public GameObject FighterPrefabA;
+    public GameObject FighterPrefabB;
 
     public Vector3 ArenaCenter;
     public float ArenaRadius;
@@ -16,9 +17,6 @@ public class BattleManager : MonoBehaviour {
 
     public Transform StartingPosA;
     public Transform StartingPosB;
-
-    public Material MaterialA;
-    public Material MaterialB;
 
     public FighterTemplate TestFighterA;
     public FighterTemplate TestFighterB;
@@ -31,14 +29,12 @@ public class BattleManager : MonoBehaviour {
     public void NewBattle(FighterTemplate _FighterA, FighterTemplate _FighterB) { // add seed
         Debug.LogWarning("<<< New battle >>>");
 
-        FighterA = Instantiate(FighterPrefab, StartingPosA).GetComponent<FighterEntity>();
-        FighterB = Instantiate(FighterPrefab, StartingPosB).GetComponent<FighterEntity>();
+        FighterA = Instantiate(FighterPrefabA, StartingPosA).GetComponent<FighterEntity>();
+        FighterB = Instantiate(FighterPrefabB, StartingPosB).GetComponent<FighterEntity>();
         FighterA.BattleManager = this;
         FighterB.BattleManager = this;
         FighterA.EnemyFighter = FighterB;
         FighterB.EnemyFighter = FighterA;
-        FighterA.Material = MaterialA;
-        FighterB.Material = MaterialB;
         FighterA.SetupEntity(_FighterA);
         FighterB.SetupEntity(_FighterB);
         GUIManager.PlayerHealthBar.SetupHealthBar(FighterA);

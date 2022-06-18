@@ -37,9 +37,10 @@ public class FighterEntity : MonoBehaviour {
         FighterSM = this.GetComponent<FighterSM>();
 
         // Setup Materials
+        /*
         foreach (Transform MeshChild in this.transform) {
             MeshChild.GetComponent<MeshRenderer>().material = Material;
-        }
+        }*/
 
         PopupDamage = Instantiate(BattleManager.GUIManager.PrefabPopupDamage, BattleManager.GUIManager.transform);
         PopupDamage.LinkedFighter = this;
