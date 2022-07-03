@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e256d087d142fb04daae9ecccc53d111, type: 3}
-  m_Name: Test_Weapon
+  m_Name: LightSword
   m_EditorClassIdentifier: 
-  damage: 2
-  AttackSpeed: 5
-  AttackRange: 0.5
+  damage: 1
+  AttackSpeed: 3
+  AttackRange: 1
