@@ -2,7 +2,10 @@ fileFormatVersion: 2
 guid: d2b1d9f94bac5b14494538a53f5535d4
 ModelImporter:
   serializedVersion: 21202
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: 9122449036861358216
+    second: PIG SCENE
   externalObjects: {}
   materials:
     materialImportMode: 2
