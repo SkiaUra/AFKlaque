@@ -4,7 +4,7 @@ using UnityEngine;
 public class State_BasicIdle : BaseState {
 
     public override void EnterState(FighterSM _FighterSM) { // Do enter shit once
-
+        _FighterSM.AnimatorController.SetTrigger("Idle");
     }
 
     public override void UpdateState(FighterSM _FighterSM) { // Do things

@@ -7,6 +7,7 @@ public class State_MoveAwayFromEnemy : BaseState {
     Tween Tween;
 
     public override void EnterState(FighterSM _FighterSM) { // Do enter shit once
+        _FighterSM.AnimatorController.SetTrigger("Walk");
         Vector3 pos = SeekValidedestination(_FighterSM, _FighterSM.FighterEntity.ComputedMoveRange);
         Tween = MoveToPosition(_FighterSM, pos);
         _FighterSM.FighterEntity.ComputedMoveDelay = _FighterSM.FighterEntity.FighterTemplate.MoveDelay;
@@ -29,7 +30,7 @@ public class State_MoveAwayFromEnemy : BaseState {
         Vector3 PosXZ = new Vector3(_EndPoint.x, 0f, _EndPoint.z);
         // temps = dist / vitesse
         float MoveTime = Mathf.Abs(Vector3.Distance(_FighterSM.transform.position, PosXZ) / _FighterSM.FighterEntity.ComputedMoveSpeed);
-        return Tween = _FighterSM.transform.DOMove(PosXZ, MoveTime).SetEase(Ease.InOutExpo);
+        return Tween = _FighterSM.transform.DOMove(PosXZ, MoveTime);
     }
 
     Vector3 SeekValidedestination(FighterSM _FighterSM, float radiusMax) {
@@ -43,16 +44,17 @@ public class State_MoveAwayFromEnemy : BaseState {
         Vector3 _ArenaCenter = _FighterSM.FighterEntity.BattleManager.ArenaCenter;
         float _ArenaSize = _FighterSM.FighterEntity.BattleManager.ArenaRadius;
         float dist = Vector3.Distance(PickedPosition, _ArenaCenter);
+        Vector3 FinalPos = PickedPosition;
 
         if (dist < _ArenaSize) {
             // Valid position, do nothing
         } else {
             // Wrong position
-            Vector3 TowardArenaCenter = _ArenaCenter - PickedPosition;
-            PickedPosition = PickedPosition + TowardArenaCenter * e.ComputedMoveRange;
+            Debug.Log("wrong position !");
+            Vector3 TowardArenaCenter = PickedPosition - _ArenaCenter;
+            FinalPos = Vector3.Normalize(TowardArenaCenter) * _ArenaSize;
         }
 
-        Vector3 FinalPos = PickedPosition;
         _FighterSM.DebugTargetMovement = FinalPos;
         return FinalPos;
     }

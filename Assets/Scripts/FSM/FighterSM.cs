@@ -7,6 +7,7 @@ public class FighterSM : MonoBehaviour {
     public FighterEntity FighterEntity;
     public BrainManager BrainManager;
     public BaseState CurrentState;
+    public Animator AnimatorController;
 
     // States
     public State_BasicIdle idle;
@@ -15,6 +16,7 @@ public class FighterSM : MonoBehaviour {
 
     void Start() {
         MakeNewDecision();
+        AnimatorController = GetComponentInChildren<Animator>();
     }
 
     void Update() {
@@ -39,11 +41,12 @@ public class FighterSM : MonoBehaviour {
 
 
     // Gizmos //
-
+    /*
     private void OnGUI() {
         string content = CurrentState != null ? CurrentState.name : "(no current state)";
         GUILayout.Label($"<color='black'><size=40>{content}</size></color>");
     }
+    */
 
     void OnDrawGizmos() {
         UnityEditor.Handles.color = Color.green;

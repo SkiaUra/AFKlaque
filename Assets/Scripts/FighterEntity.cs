@@ -20,6 +20,7 @@ public class FighterEntity : MonoBehaviour {
     public float ComputedMoveSpeed;
     public float ComputedMoveDelay;
     public float ComputedMoveRange;
+    public float ComputedSize;
 
     [Header("Main Weapon")]
     public WeaponTemplate MainWeapon;
@@ -36,12 +37,6 @@ public class FighterEntity : MonoBehaviour {
         // Bind FSM
         FighterSM = this.GetComponent<FighterSM>();
 
-        // Setup Materials
-        /*
-        foreach (Transform MeshChild in this.transform) {
-            MeshChild.GetComponent<MeshRenderer>().material = Material;
-        }*/
-
         PopupDamage = Instantiate(BattleManager.GUIManager.PrefabPopupDamage, BattleManager.GUIManager.transform);
         PopupDamage.LinkedFighter = this;
 
@@ -51,6 +46,7 @@ public class FighterEntity : MonoBehaviour {
         ComputedMoveSpeed = _Template.MoveSpeed;
         ComputedMoveDelay = _Template.MoveDelay;
         ComputedMoveRange = _Template.MoveRange;
+        ComputedSize = _Template.Size;
 
         // Main Weapon
         MainWeapon = _Template.MainWeapon;
@@ -59,5 +55,14 @@ public class FighterEntity : MonoBehaviour {
         MainWeaponCountdown = MainWeapon.AttackSpeed;
 
         FighterSM.enabled = true;
+    }
+
+    void OnDrawGizmos() {
+        UnityEditor.Handles.color = Color.green;
+        UnityEditor.Handles.DrawWireDisc(this.transform.position, Vector3.up, ComputedSize);
+        UnityEditor.Handles.color = Color.red;
+        UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.up, MainWeaponRange);
+        UnityEditor.Handles.color = Color.blue;
+        UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.up, ComputedMoveRange);
     }
 }
