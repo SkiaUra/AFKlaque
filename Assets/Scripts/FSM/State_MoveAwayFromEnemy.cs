@@ -7,7 +7,7 @@ public class State_MoveAwayFromEnemy : BaseState {
     Tween Tween;
 
     public override void EnterState(FighterSM _FighterSM) { // Do enter shit once
-        _FighterSM.AnimatorController.SetTrigger("Walk");
+        _FighterSM.AnimatorController.SetBool("Walk", true);
         Vector3 pos = SeekValidedestination(_FighterSM, _FighterSM.FighterEntity.ComputedMoveRange);
         Tween = MoveToPosition(_FighterSM, pos);
         _FighterSM.FighterEntity.ComputedMoveDelay = _FighterSM.FighterEntity.FighterTemplate.MoveDelay;
@@ -20,7 +20,7 @@ public class State_MoveAwayFromEnemy : BaseState {
     }
 
     public override void ExitState(FighterSM _FighterSM) { // End things if needed
-
+        _FighterSM.AnimatorController.SetBool("Walk", false);
         _FighterSM.MakeNewDecision();
     }
 

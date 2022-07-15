@@ -35,18 +35,11 @@ public class FighterSM : MonoBehaviour {
 
     public void MakeNewDecision() {
         // get a decision and play it
-        BaseState decision = BrainManager.PickAction();
-        SwitchState(decision);
+        if (FighterEntity.isCooldownFreezed == false) {
+            BaseState decision = BrainManager.PickAction();
+            SwitchState(decision);
+        }
     }
-
-
-    // Gizmos //
-    /*
-    private void OnGUI() {
-        string content = CurrentState != null ? CurrentState.name : "(no current state)";
-        GUILayout.Label($"<color='black'><size=40>{content}</size></color>");
-    }
-    */
 
     void OnDrawGizmos() {
         UnityEditor.Handles.color = Color.green;

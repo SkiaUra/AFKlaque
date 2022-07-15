@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-
-
 public class FighterEntity : MonoBehaviour {
     public BattleManager BattleManager;
     public FighterTemplate FighterTemplate;
@@ -13,6 +11,9 @@ public class FighterEntity : MonoBehaviour {
 
     public Material Material;
     public PopupDamageController PopupDamage;
+
+    public bool isCooldownFreezed = false;
+    public bool isStunned = false;
 
     [Header("Stats")]
     public int ComputedCurrentHealth;
@@ -64,5 +65,28 @@ public class FighterEntity : MonoBehaviour {
         UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.up, MainWeaponRange);
         UnityEditor.Handles.color = Color.blue;
         UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.up, ComputedMoveRange);
+    }
+
+    public void PushBack(float _PushDist, float _StunDuration) {
+        Vector3 PushDir = transform.position - EnemyFighter.transform.position;
+
+        Vector3 CalcPos = transform.position + Vector3.Normalize(PushDir) * _PushDist;
+
+        if (Vector3.Distance(CalcPos, BattleManager.ArenaCenter) > BattleManager.ArenaRadius) {
+            CalcPos = Vector3.Normalize(CalcPos - BattleManager.ArenaCenter) * BattleManager.ArenaRadius;
+        }
+        CalcPos = new Vector3(CalcPos.x, 0f, CalcPos.z);
+
+        isStunned = true;
+        isCooldownFreezed = true;
+        FighterSM.AnimatorController.SetBool("Hit", true);
+        transform.DOMove(CalcPos, _StunDuration).OnComplete(PushBackRecovery);
+    }
+
+    void PushBackRecovery() {
+        Debug.Log("alalalalaal");
+        isStunned = false;
+        isCooldownFreezed = false;
+        FighterSM.AnimatorController.SetBool("Hit", false);
     }
 }
