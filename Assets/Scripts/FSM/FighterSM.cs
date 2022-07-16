@@ -6,13 +6,13 @@ using Sirenix.OdinInspector;
 public class FighterSM : MonoBehaviour {
     public FighterEntity FighterEntity;
     public BrainManager BrainManager;
-    public BaseState CurrentState;
     public Animator AnimatorController;
+    [Header("CURRENT STATE")]
+    public BaseState CurrentState;
+    public Vector3 DebugTargetMovement = Vector3.zero;
 
     // States
     public State_BasicIdle idle;
-
-    public Vector3 DebugTargetMovement = Vector3.zero;
 
     void Start() {
         MakeNewDecision();

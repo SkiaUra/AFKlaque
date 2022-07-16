@@ -13,7 +13,6 @@ public class State_BasicIdle : BaseState {
     }
 
     public override void ExitState(FighterSM _FighterSM) { // End things if needed
-        _FighterSM.AnimatorController.SetBool("Idle", false);
         _FighterSM.MakeNewDecision();
     }
 

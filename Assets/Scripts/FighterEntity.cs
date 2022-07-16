@@ -69,7 +69,6 @@ public class FighterEntity : MonoBehaviour {
 
     public void PushBack(float _PushDist, float _StunDuration) {
         Vector3 PushDir = transform.position - EnemyFighter.transform.position;
-
         Vector3 CalcPos = transform.position + Vector3.Normalize(PushDir) * _PushDist;
 
         if (Vector3.Distance(CalcPos, BattleManager.ArenaCenter) > BattleManager.ArenaRadius) {
@@ -80,11 +79,11 @@ public class FighterEntity : MonoBehaviour {
         isStunned = true;
         isCooldownFreezed = true;
         FighterSM.AnimatorController.SetBool("Hit", true);
+        FighterSM.AnimatorController.SetBool("Walk", false);
         transform.DOMove(CalcPos, _StunDuration).OnComplete(PushBackRecovery);
     }
 
     void PushBackRecovery() {
-        Debug.Log("alalalalaal");
         isStunned = false;
         isCooldownFreezed = false;
         FighterSM.AnimatorController.SetBool("Hit", false);
