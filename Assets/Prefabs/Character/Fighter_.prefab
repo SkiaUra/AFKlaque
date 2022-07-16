@@ -54,11 +54,14 @@ MonoBehaviour:
   FighterSM: {fileID: 3339747698009868403}
   Material: {fileID: 0}
   PopupDamage: {fileID: 0}
+  isCooldownFreezed: 0
+  isStunned: 0
   ComputedCurrentHealth: 0
   ComputedMaxHealth: 0
   ComputedMoveSpeed: 0
   ComputedMoveDelay: 0
   ComputedMoveRange: 0
+  ComputedSize: 0
   MainWeapon: {fileID: 0}
   MainWeaponDamage: 0
   MainWeaponRange: 0
@@ -78,6 +81,7 @@ MonoBehaviour:
   FighterEntity: {fileID: 3234323843196674006}
   BrainManager: {fileID: 6466552234946245583}
   CurrentState: {fileID: 0}
+  AnimatorController: {fileID: 0}
   idle: {fileID: 11400000, guid: 2fc7026514c30f7458ce13c1e83fd1cf, type: 2}
   DebugTargetMovement: {x: 0, y: 0, z: 0}
 --- !u!114 &6466552234946245583
@@ -104,7 +108,7 @@ MonoBehaviour:
       CompValue: 0
       Score: 50
   - Name: Basic Movement
-    ActionState: {fileID: 11400000, guid: 0676d117c3f726c45ba0f34b0fe5922c, type: 2}
+    ActionState: {fileID: 11400000, guid: 7e4e00183b03dc042844768d613b8297, type: 2}
     ActionScore: 0
     Scorers:
     - BattleData: 2
