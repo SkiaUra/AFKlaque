@@ -5,21 +5,24 @@ using DG.Tweening;
 public class State_MoveRandom : State_BasicMove {
     private Tween _Tween;
 
-    public override void EnterState(FighterSM _FighterSM) { // Do enter shit once
-        Vector3 pos = this._ToolboxMovement.GetRandomPositionAroundMe(_FighterSM, _FighterSM.FighterEntity.ComputedMoveRange);
-        _Tween = this._ToolboxMovement.MoveToPosition(_FighterSM, pos);
-        _FighterSM.FighterEntity.ComputedMoveDelay = _FighterSM.FighterEntity.FighterTemplate.MoveDelay;
+    public override void EnterState(FighterSM FighterSM) { // Do enter shit once
+        FighterSM.AnimatorController.SetBool("Walk", true);
+        Vector3 pos = this._ToolboxMovement.GetRandomPositionAroundMe(FighterSM, FighterSM.FighterEntity.ComputedMoveRange);
+        _Tween = this._ToolboxMovement.MoveToPosition(FighterSM, pos);
+        FighterSM.FighterEntity.ComputedMoveDelay = FighterSM.FighterEntity.FighterTemplate.MoveDelay;
     }
 
-    public override void UpdateState(FighterSM _FighterSM) { // Do things
-        Debug.Log("looping ?");
+    public override void UpdateState(FighterSM FighterSM) { // Do things
         if (!_Tween.IsPlaying()) {
-            _FighterSM.AnimatorController.SetBool("Walk", false);
-            ExitState(_FighterSM);
+            ExitState(FighterSM, true);
         }
     }
 
-    public override void ExitState(FighterSM _FighterSM) { // End things if needed
-        _FighterSM.MakeNewDecision();
+    public override void ExitState(FighterSM FighterSM, bool startNewDecision) { // End things if needed
+        if (_Tween.IsPlaying()) {
+            _ToolboxMovement.StopMovement(_Tween);
+        }
+        FighterSM.AnimatorController.SetBool("Walk", false);
+        if (startNewDecision) FighterSM.MakeNewDecision();
     }
 }

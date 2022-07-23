@@ -37,6 +37,8 @@ public class FighterEntity : MonoBehaviour {
     public void SetupEntity(FighterTemplate _Template) {
         // Bind FSM
         FighterSM = this.GetComponent<FighterSM>();
+        FighterSM.idle = _Template.idle;
+        FighterSM.hit = _Template.hit;
 
         PopupDamage = Instantiate(BattleManager.GUIManager.PrefabPopupDamage, BattleManager.GUIManager.transform);
         PopupDamage.LinkedFighter = this;
@@ -67,25 +69,29 @@ public class FighterEntity : MonoBehaviour {
         UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.up, ComputedMoveRange);
     }
 
-    public void PushBack(float _PushDist, float _StunDuration) {
-        Vector3 PushDir = transform.position - EnemyFighter.transform.position;
-        Vector3 CalcPos = transform.position + Vector3.Normalize(PushDir) * _PushDist;
+    /*
+        public void PushBack(float _PushDist, float _StunDuration) {
+            // stop current state
+            FighterSM.CurrentState.ExitState(FighterSM);
+            Vector3 PushDir = transform.position - EnemyFighter.transform.position;
+            Vector3 CalcPos = transform.position + Vector3.Normalize(PushDir) * _PushDist;
 
-        if (Vector3.Distance(CalcPos, BattleManager.ArenaCenter) > BattleManager.ArenaRadius) {
-            CalcPos = Vector3.Normalize(CalcPos - BattleManager.ArenaCenter) * BattleManager.ArenaRadius;
+            if (Vector3.Distance(CalcPos, BattleManager.ArenaCenter) > BattleManager.ArenaRadius) {
+                CalcPos = Vector3.Normalize(CalcPos - BattleManager.ArenaCenter) * BattleManager.ArenaRadius;
+            }
+            CalcPos = new Vector3(CalcPos.x, 0f, CalcPos.z);
+
+            isStunned = true;
+            isCooldownFreezed = true;
+            FighterSM.SwitchState(FighterSM.idle);
+            FighterSM.AnimatorController.SetBool("Hit", true);
+            FighterSM.AnimatorController.SetBool("Walk", false);
+
+            transform.DOMove(CalcPos, _StunDuration).OnComplete(() => {
+                isStunned = false;
+                isCooldownFreezed = false;
+                FighterSM.AnimatorController.SetBool("Hit", false);
+            });
         }
-        CalcPos = new Vector3(CalcPos.x, 0f, CalcPos.z);
-
-        isStunned = true;
-        isCooldownFreezed = true;
-        FighterSM.SwitchState(FighterSM.idle);
-        FighterSM.AnimatorController.SetBool("Hit", true);
-        FighterSM.AnimatorController.SetBool("Walk", false);
-
-        transform.DOMove(CalcPos, _StunDuration).OnComplete(() => {
-            isStunned = false;
-            isCooldownFreezed = false;
-            FighterSM.AnimatorController.SetBool("Hit", false);
-        });
-    }
+    */
 }

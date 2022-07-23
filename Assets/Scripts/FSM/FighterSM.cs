@@ -8,6 +8,7 @@ public class FighterSM : MonoBehaviour {
     public BrainManager BrainManager;
     public Animator AnimatorController;
     public State_BasicIdle idle;
+    public State_BasicHit hit;
 
     [Header("CURRENT STATE")]
     public BaseState CurrentState;
@@ -26,10 +27,16 @@ public class FighterSM : MonoBehaviour {
         // MouseMovement();
     }
 
-    public void SwitchState(BaseState _State) {
+    public void SwitchState(BaseState State) {
         // Debug.Log("Switch to " + _State);
-        CurrentState = _State;
-        _State.EnterState(this);
+        CurrentState = State;
+        State.EnterState(this);
+    }
+
+    public void CancelState(BaseState State) {
+        CurrentState.ExitState(this, false);
+        CurrentState = State;
+        State.EnterState(this);
     }
 
     public void MakeNewDecision() {

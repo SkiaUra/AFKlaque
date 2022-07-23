@@ -13,8 +13,7 @@ public class FighterTemplate : ScriptableObject {
 
     [Header("FSM setup")]
     public State_BasicIdle idle;
-    public State_BasicMove move;
-    public State_BasicAttack attack;
+    public State_BasicHit hit;
 
     public WeaponTemplate MainWeapon;
     public WeaponTemplate OffWeapon;

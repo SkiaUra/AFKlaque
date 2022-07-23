@@ -6,25 +6,24 @@ public class State_BasicAttack : BaseState {
 
     Tween Tween;
 
-    public override void EnterState(FighterSM _FighterSM) { // Do enter shit once
-        _FighterSM.FighterEntity.EnemyFighter.PushBack(1f, 1f);
-        _FighterSM.FighterEntity.EnemyFighter.ComputedCurrentHealth -= _FighterSM.FighterEntity.MainWeaponDamage;
-        _FighterSM.FighterEntity.PopupDamage.Show();
-        _FighterSM.FighterEntity.MainWeaponCountdown = _FighterSM.FighterEntity.MainWeapon.AttackSpeed;
+    public override void EnterState(FighterSM FighterSM) {
+        FighterSM.AnimatorController.SetBool("Attack", true);
+        // push away target
+        FighterSM.FighterEntity.EnemyFighter.FighterSM.CancelState(FighterSM.FighterEntity.EnemyFighter.FighterSM.hit);
+        // apply damage
+        FighterSM.FighterEntity.EnemyFighter.ComputedCurrentHealth -= FighterSM.FighterEntity.MainWeaponDamage;
+        // display popup
+        FighterSM.FighterEntity.PopupDamage.Show();
+        // reset cooldown
+        FighterSM.FighterEntity.MainWeaponCountdown = FighterSM.FighterEntity.MainWeapon.AttackSpeed;
     }
 
-    public override void UpdateState(FighterSM _FighterSM) { // Do things
-        ExitState(_FighterSM);
+    public override void UpdateState(FighterSM FighterSM) { // Do things
+        ExitState(FighterSM, true);
     }
 
-    public override void ExitState(FighterSM _FighterSM) { // End things if needed
-        _FighterSM.MakeNewDecision();
-    }
-
-    public Vector3 ClosestPositionToTarget(FighterSM _FighterSM) {
-        Vector3 A = _FighterSM.FighterEntity.transform.position;
-        Vector3 B = _FighterSM.FighterEntity.EnemyFighter.transform.position;
-        Vector3 AB = Vector3.Normalize(A - B);
-        return B + AB * _FighterSM.FighterEntity.MainWeapon.AttackRange;
+    public override void ExitState(FighterSM FighterSM, bool startNewDecision) { // End things if needed
+        FighterSM.AnimatorController.SetBool("Attack", false);
+        if (startNewDecision) FighterSM.MakeNewDecision();
     }
 }

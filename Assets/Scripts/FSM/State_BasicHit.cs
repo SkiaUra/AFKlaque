@@ -3,27 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-[CreateAssetMenu(menuName = "State/BasicIdle")]
+public class Attackdetails {
+
+}
+
+[CreateAssetMenu(menuName = "State/BasicHit")]
 public class State_BasicHit : BaseState {
 
-    Tween Tween;
+    public Attackdetails Attackdetails;
+    private Tween _Tween;
 
-    public override void EnterState(FighterSM _FighterSM) { // Do enter shit once
-        _FighterSM.AnimatorController.SetTrigger("Hit");
+    public override void EnterState(FighterSM FighterSM) { // Do enter shit once
+        FighterSM.AnimatorController.SetBool("Hit", true);
+        Vector3 pos = this._ToolboxMovement.GetPositionPushBack(FighterSM, 2f);
+        _Tween = this._ToolboxMovement.MoveToPosition(FighterSM, pos);
+        FighterSM.FighterEntity.isCooldownFreezed = true;
     }
 
-    public override void UpdateState(FighterSM _FighterSM) { // Do things
-
+    public override void UpdateState(FighterSM FighterSM) { // Do things
+        if (!_Tween.IsPlaying()) {
+            ExitState(FighterSM, true);
+        }
     }
 
-    public override void ExitState(FighterSM _FighterSM) { // End things if needed
-        _FighterSM.MakeNewDecision();
-    }
-
-    public Tween MoveToPosition(FighterSM _FighterSM, Vector3 _EndPoint) {
-        Vector3 PosXZ = new Vector3(_EndPoint.x, 0f, _EndPoint.z);
-        // temps = dist / vitesse
-        float MoveTime = Mathf.Abs(Vector3.Distance(_FighterSM.transform.position, PosXZ) / _FighterSM.FighterEntity.ComputedMoveSpeed);
-        return Tween = _FighterSM.transform.DOMove(PosXZ, MoveTime);
+    public override void ExitState(FighterSM FighterSM, bool startNewDecision) { // End things if needed
+        FighterSM.AnimatorController.SetBool("Hit", false);
+        FighterSM.FighterEntity.isCooldownFreezed = false;
+        if (startNewDecision) FighterSM.MakeNewDecision();
     }
 }

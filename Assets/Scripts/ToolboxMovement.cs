@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class ToolboxMovement {
 
+    public void StopMovement(Tween Tween) {
+        Tween.Pause();
+        Tween.Kill();
+    }
+
     public Tween MoveToPosition(FighterSM FighterSM, Vector3 _EndPoint) {
         _EndPoint = new Vector3(_EndPoint.x, 0f, _EndPoint.z);
         FighterSM.DebugTargetMovement = _EndPoint;
@@ -12,7 +17,6 @@ public class ToolboxMovement {
         float dist = Vector3.Distance(FighterSM.transform.position, _EndPoint);
         float speed = FighterSM.FighterEntity.ComputedMoveSpeed;
         float moveTime = Mathf.Abs(dist / speed);
-        FighterSM.AnimatorController.SetBool("Walk", true);
         return FighterSM.transform.DOMove(_EndPoint, moveTime).SetEase(Ease.InOutSine);
     }
 
@@ -74,5 +78,19 @@ public class ToolboxMovement {
         Vector3 B = _FighterSM.FighterEntity.EnemyFighter.transform.position;
         Vector3 AB = Vector3.Normalize(A - B);
         return B + AB * _FighterSM.FighterEntity.MainWeapon.AttackRange;
+    }
+
+    public Vector3 GetPositionPushBack(FighterSM FighterSM, float _PushDist) {
+        // stop current state
+        Vector3 PushDir = FighterSM.transform.position - FighterSM.FighterEntity.EnemyFighter.transform.position;
+        Vector3 CalcPos = FighterSM.transform.position + Vector3.Normalize(PushDir) * _PushDist;
+
+        BattleManager BM = FighterSM.FighterEntity.BattleManager;
+        if (Vector3.Distance(CalcPos, BM.ArenaCenter) > BM.ArenaRadius) {
+            CalcPos = Vector3.Normalize(CalcPos - BM.ArenaCenter) * BM.ArenaRadius;
+        }
+        CalcPos = new Vector3(CalcPos.x, 0f, CalcPos.z);
+
+        return CalcPos;
     }
 }
