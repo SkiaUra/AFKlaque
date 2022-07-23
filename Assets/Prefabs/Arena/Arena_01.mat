@@ -57,7 +57,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture0:
-        m_Texture: {fileID: 2800000, guid: 5db89f8760e6e2040a3ee67a925dfbe1, type: 3}
+        m_Texture: {fileID: 2800000, guid: f30a89f0798e7b44f93be585c36e4c53, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
@@ -79,8 +79,8 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _RimOffset: 0.1
-    - _ShadowIntensity: 0.5
-    - _ShadowStep: 0.5
+    - _ShadowIntensity: 0.469
+    - _ShadowStep: 0.72
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
