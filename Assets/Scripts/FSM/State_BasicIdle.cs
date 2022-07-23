@@ -17,7 +17,9 @@ public class State_BasicIdle : BaseState {
     }
 
     public void UpdateCycle(FighterSM _FighterSM) {
-        _FighterSM.FighterEntity.ComputedMoveDelay -= Time.deltaTime;
-        _FighterSM.FighterEntity.MainWeaponCountdown -= Time.deltaTime;
+        if (!_FighterSM.FighterEntity.isCooldownFreezed) {
+            _FighterSM.FighterEntity.ComputedMoveDelay -= Time.deltaTime;
+            _FighterSM.FighterEntity.MainWeaponCountdown -= Time.deltaTime;
+        }
     }
 }
