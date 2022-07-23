@@ -7,12 +7,11 @@ public class FighterSM : MonoBehaviour {
     public FighterEntity FighterEntity;
     public BrainManager BrainManager;
     public Animator AnimatorController;
+    public State_BasicIdle idle;
+
     [Header("CURRENT STATE")]
     public BaseState CurrentState;
     public Vector3 DebugTargetMovement = Vector3.zero;
-
-    // States
-    public State_BasicIdle idle;
 
     void Start() {
         MakeNewDecision();
@@ -35,10 +34,8 @@ public class FighterSM : MonoBehaviour {
 
     public void MakeNewDecision() {
         // get a decision and play it
-        if (FighterEntity.isCooldownFreezed == false) {
-            BaseState decision = BrainManager.PickAction();
-            SwitchState(decision);
-        }
+        BaseState decision = BrainManager.PickAction();
+        SwitchState(decision);
     }
 
     void OnDrawGizmos() {
