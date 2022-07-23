@@ -18,7 +18,6 @@ MonoBehaviour:
   MoveRange: 3
   Size: 0.7
   idle: {fileID: 11400000, guid: 2fc7026514c30f7458ce13c1e83fd1cf, type: 2}
-  move: {fileID: 11400000, guid: 7e4e00183b03dc042844768d613b8297, type: 2}
-  attack: {fileID: 11400000, guid: f1b06b28076a03f43b1d4b3b9d3cb012, type: 2}
+  hit: {fileID: 11400000, guid: 29b8a7869807c7a4b915baf743180bec, type: 2}
   MainWeapon: {fileID: 11400000, guid: 52715340565783e41be79020686b2c24, type: 2}
   OffWeapon: {fileID: 0}
