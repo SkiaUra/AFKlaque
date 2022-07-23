@@ -78,14 +78,14 @@ public class FighterEntity : MonoBehaviour {
 
         isStunned = true;
         isCooldownFreezed = true;
+        FighterSM.SwitchState(FighterSM.idle);
         FighterSM.AnimatorController.SetBool("Hit", true);
         FighterSM.AnimatorController.SetBool("Walk", false);
-        transform.DOMove(CalcPos, _StunDuration).OnComplete(PushBackRecovery);
-    }
 
-    void PushBackRecovery() {
-        isStunned = false;
-        isCooldownFreezed = false;
-        FighterSM.AnimatorController.SetBool("Hit", false);
+        transform.DOMove(CalcPos, _StunDuration).OnComplete(() => {
+            isStunned = false;
+            isCooldownFreezed = false;
+            FighterSM.AnimatorController.SetBool("Hit", false);
+        });
     }
 }
