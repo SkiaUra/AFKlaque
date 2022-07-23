@@ -7,12 +7,13 @@ public class ToolboxMovement {
 
     public Tween MoveToPosition(FighterSM FighterSM, Vector3 _EndPoint) {
         _EndPoint = new Vector3(_EndPoint.x, 0f, _EndPoint.z);
+        FighterSM.DebugTargetMovement = _EndPoint;
         // temps = dist / vitesse
         float dist = Vector3.Distance(FighterSM.transform.position, _EndPoint);
         float speed = FighterSM.FighterEntity.ComputedMoveSpeed;
         float moveTime = Mathf.Abs(dist / speed);
         FighterSM.AnimatorController.SetBool("Walk", true);
-        return FighterSM.transform.DOMove(_EndPoint, moveTime).SetEase(Ease.InOutCirc);
+        return FighterSM.transform.DOMove(_EndPoint, moveTime).SetEase(Ease.InOutSine);
     }
 
     public Vector3 GetRandomPositionAroundMe(FighterSM _FighterSM, float radiusMax) {
@@ -30,8 +31,6 @@ public class ToolboxMovement {
             Vector3 TowardArenaCenter = PickedPosition - _ArenaCenter;
             FinalPos = Vector3.Normalize(TowardArenaCenter) * _ArenaSize;
         }
-
-        _FighterSM.DebugTargetMovement = FinalPos;
         return FinalPos;
     }
 
@@ -39,7 +38,6 @@ public class ToolboxMovement {
         FighterEntity e = _FighterSM.FighterEntity;
 
         Vector3 AwayFromEnemy = Vector3.Normalize(e.transform.position - e.EnemyFighter.transform.position);
-
         Vector3 PickedPosition = _FighterSM.transform.position + AwayFromEnemy;
 
         // Not outside Arena
@@ -48,16 +46,10 @@ public class ToolboxMovement {
         float dist = Vector3.Distance(PickedPosition, _ArenaCenter);
         Vector3 FinalPos = PickedPosition;
 
-        if (dist < _ArenaSize) {
-            // Valid position, do nothing
-        } else {
-            // Wrong position
-            Debug.Log("wrong position !");
+        if (dist > _ArenaSize) {
             Vector3 TowardArenaCenter = PickedPosition - _ArenaCenter;
             FinalPos = Vector3.Normalize(TowardArenaCenter) * _ArenaSize;
         }
-
-        _FighterSM.DebugTargetMovement = FinalPos;
         return FinalPos;
     }
 
@@ -73,9 +65,14 @@ public class ToolboxMovement {
         } else {
             TowardEnemy = TowardEnemy * (dist * 0.5f);
         }
-
         Vector3 FinalPos = _FighterSM.transform.position + TowardEnemy;
-        _FighterSM.DebugTargetMovement = FinalPos;
         return FinalPos;
+    }
+
+    public Vector3 ClosestPositionToTarget(FighterSM _FighterSM) {
+        Vector3 A = _FighterSM.FighterEntity.transform.position;
+        Vector3 B = _FighterSM.FighterEntity.EnemyFighter.transform.position;
+        Vector3 AB = Vector3.Normalize(A - B);
+        return B + AB * _FighterSM.FighterEntity.MainWeapon.AttackRange;
     }
 }
