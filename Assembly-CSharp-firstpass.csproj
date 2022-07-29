@@ -40,12 +40,12 @@
      <Compile Include="Assets\Plugins\DOTween\Modules\DOTweenModuleEPOOutline.cs" />
      <Compile Include="Assets\Plugins\DOTween\Modules\DOTweenModuleUI.cs" />
      <Compile Include="Assets\Plugins\DOTween\Modules\DOTweenModulePhysics2D.cs" />
+     <Compile Include="Assets\Plugins\GUI Kit Casual Game\Scripts\CtrPanel.cs" />
      <Compile Include="Assets\Plugins\DOTween\Modules\DOTweenModuleUtils.cs" />
+     <Compile Include="Assets\Plugins\GUI Kit Casual Game\Extensions\UIParticle\UIParticleSystem.cs" />
      <Compile Include="Assets\Plugins\DOTween\Modules\DOTweenModulePhysics.cs" />
      <Compile Include="Assets\Plugins\DOTween\Modules\DOTweenModuleAudio.cs" />
      <Compile Include="Assets\Plugins\DOTween\Modules\DOTweenModuleSprite.cs" />
-     <Compile Include="Assets\Plugins\GUI Kit Casual Game\Extensions\UIParticle\UIParticleSystem.cs" />
-     <Compile Include="Assets\Plugins\GUI Kit Casual Game\Scripts\CtrPanel.cs" />
      <None Include="Assets\Plugins\GUI Kit Casual Game\Extensions\UIParticle\hidden particle.shader" />
      <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.Config.xml" />
      <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.xml" />
@@ -730,9 +730,6 @@
     <Reference Include="Unity.Subsystem.Registration">
         <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.Subsystem.Registration.dll</HintPath>
     </Reference>
-    <Reference Include="UniTask.DOTween">
-        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\UniTask.DOTween.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Postprocessing.Editor">
         <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.Postprocessing.Editor.dll</HintPath>
     </Reference>
@@ -744,9 +741,6 @@
     </Reference>
     <Reference Include="Unity.Rider.Editor">
         <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UniTask.Linq">
-        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\UniTask.Linq.dll</HintPath>
     </Reference>
     <Reference Include="Unity.AdaptivePerformance.UI.Editor">
         <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.AdaptivePerformance.UI.Editor.dll</HintPath>
@@ -762,9 +756,6 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.Core">
         <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="UniTask.TextMeshPro">
-        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\UniTask.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.AdaptivePerformance.Simulator.Editor">
         <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.AdaptivePerformance.Simulator.Editor.dll</HintPath>
@@ -790,14 +781,8 @@
     <Reference Include="Unity.Notifications.Android">
         <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.Notifications.Android.dll</HintPath>
     </Reference>
-    <Reference Include="UniTask">
-        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\UniTask.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.AdaptivePerformance.Profiler.Editor">
         <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.AdaptivePerformance.Profiler.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UniTask.Addressables">
-        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\UniTask.Addressables.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
         <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>

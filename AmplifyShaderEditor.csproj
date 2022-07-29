@@ -104,9 +104,9 @@
      <Compile Include="Assets\AmplifyShaderEditor\Plugins\Editor\Templates\TemplatePass.cs" />
      <Compile Include="Assets\AmplifyShaderEditor\Plugins\Editor\Nodes\Constants\ShaderVariables\Various\PrimitiveIdVariableNode.cs" />
      <Compile Include="Assets\AmplifyShaderEditor\Plugins\Editor\Templates\TemplatesBlendModule.cs" />
+     <Compile Include="Assets\AmplifyShaderEditor\Plugins\Editor\Native\FallbackString.cs" />
      <Compile Include="Assets\AmplifyShaderEditor\Plugins\Editor\Nodes\Operators\ATanOpNode.cs" />
      <Compile Include="Assets\AmplifyShaderEditor\Plugins\Editor\Nodes\Constants\ShaderVariables\Transform\InverseProjectionMatrixNode.cs" />
-     <Compile Include="Assets\AmplifyShaderEditor\Plugins\Editor\Native\FallbackString.cs" />
      <Compile Include="Assets\AmplifyShaderEditor\Plugins\Editor\Nodes\Constants\Matrix4X4Node.cs" />
      <Compile Include="Assets\AmplifyShaderEditor\Plugins\Editor\Nodes\Vertex\TangentVertexDataNode.cs" />
      <Compile Include="Assets\AmplifyShaderEditor\Plugins\Editor\Nodes\Misc\WireNode.cs" />
@@ -476,8 +476,8 @@
      <Compile Include="Assets\AmplifyShaderEditor\Plugins\Editor\Nodes\Operators\OneMinusNode.cs" />
      <Compile Include="Assets\AmplifyShaderEditor\Plugins\Editor\Wires\WireReference.cs" />
      <Compile Include="Assets\AmplifyShaderEditor\Plugins\Editor\Menu\Tools\ToolsMenuButtonSep.cs" />
-     <Compile Include="Assets\AmplifyShaderEditor\Plugins\Editor\Utils\GeneratorUtils.cs" />
      <Compile Include="Assets\AmplifyShaderEditor\Plugins\Editor\Nodes\Constants\ShaderVariables\Various\FaceVariableNode.cs" />
+     <Compile Include="Assets\AmplifyShaderEditor\Plugins\Editor\Utils\GeneratorUtils.cs" />
      <Compile Include="Assets\AmplifyShaderEditor\Plugins\Editor\Nodes\Master\AdditionalSurfaceOptionsHelper.cs" />
      <Compile Include="Assets\AmplifyShaderEditor\Plugins\Editor\Nodes\Master\StandardSurface.cs" />
      <Compile Include="Assets\AmplifyShaderEditor\Plugins\Editor\Nodes\Vertex\ObjectScaleNode.cs" />

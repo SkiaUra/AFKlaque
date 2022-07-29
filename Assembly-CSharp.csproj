@@ -36,18 +36,28 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\AI\BrainManager.cs" />
      <Compile Include="Assets\Scripts\FighterTemplate.cs" />
+     <Compile Include="Assets\Scripts\PopupDamageController.cs" />
      <Compile Include="Assets\Scripts\FSM\State_BasicMove.cs" />
+     <Compile Include="Assets\Scripts\AI\BattleDataManager.cs" />
+     <Compile Include="Assets\Scripts\ToolboxMovement.cs" />
+     <Compile Include="Assets\Scripts\GUIManager.cs" />
+     <Compile Include="Assets\Scripts\ButtonSpeedController.cs" />
+     <Compile Include="Assets\Scripts\HealthBarController.cs" />
+     <Compile Include="Assets\Scripts\FSM\State_BasicHit.cs" />
      <Compile Include="Assets\Scripts\FSM\BaseState.cs" />
+     <Compile Include="Assets\Scripts\ToolboxAttack.cs" />
      <Compile Include="Assets\Scripts\FighterEntity.cs" />
      <Compile Include="Assets\Scripts\FSM\State_BasicIdle.cs" />
+     <Compile Include="Assets\Scripts\FSM\State_MoveRandom.cs" />
+     <Compile Include="Assets\Scripts\FSM\State_MoveAwayFromEnemy.cs" />
      <Compile Include="Assets\Scripts\FSM\State_BasicAttack.cs" />
      <Compile Include="Assets\Scripts\WeaponTemplate.cs" />
+     <Compile Include="Assets\Scripts\FSM\State_MoveTowardEnemy.cs" />
      <Compile Include="Assets\PostProcess\PixelisationPPSSettings.cs" />
      <Compile Include="Assets\Scripts\FSM\FighterSM.cs" />
      <Compile Include="Assets\Scripts\BattleManager.cs" />
-     <Compile Include="Assets\HealthBarController.cs" />
-     <Compile Include="Assets\GUIManager.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\Shaders\RampShader.shader" />
@@ -744,9 +754,6 @@
     <Reference Include="Unity.Subsystem.Registration">
         <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.Subsystem.Registration.dll</HintPath>
     </Reference>
-    <Reference Include="UniTask.DOTween">
-        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\UniTask.DOTween.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Postprocessing.Editor">
         <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.Postprocessing.Editor.dll</HintPath>
     </Reference>
@@ -758,9 +765,6 @@
     </Reference>
     <Reference Include="Unity.Rider.Editor">
         <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UniTask.Linq">
-        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\UniTask.Linq.dll</HintPath>
     </Reference>
     <Reference Include="Unity.AdaptivePerformance.UI.Editor">
         <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.AdaptivePerformance.UI.Editor.dll</HintPath>
@@ -776,9 +780,6 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.Core">
         <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="UniTask.TextMeshPro">
-        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\UniTask.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.AdaptivePerformance.Simulator.Editor">
         <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.AdaptivePerformance.Simulator.Editor.dll</HintPath>
@@ -804,14 +805,8 @@
     <Reference Include="Unity.Notifications.Android">
         <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.Notifications.Android.dll</HintPath>
     </Reference>
-    <Reference Include="UniTask">
-        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\UniTask.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.AdaptivePerformance.Profiler.Editor">
         <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.AdaptivePerformance.Profiler.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UniTask.Addressables">
-        <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\UniTask.Addressables.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
         <HintPath>F:\GitProjects\AFKlaque\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
