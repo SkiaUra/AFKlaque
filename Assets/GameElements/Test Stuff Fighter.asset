@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35227892a74b0ac428d26f0928b0f49a, type: 3}
+  m_Name: Test Stuff Fighter
+  m_EditorClassIdentifier: 
+  Health: 0
+  MoveSpeed: 0.5
+  MoveDelay: 1
+  MoveRange: 0.5
+  Size: 1
+  MainWeaponSlot:
+    ItemTypeInSlot: 0
+    ItemInSlot: {fileID: 11400000, guid: 390ed1071e828b64c8ff56687addf023, type: 2}
+  OffWeaponSlot:
+    ItemTypeInSlot: 0
+    ItemInSlot: {fileID: 0}
+  HatSlot:
+    ItemTypeInSlot: 1
+    ItemInSlot: {fileID: 0}
+  TrinketSlot:
+    ItemTypeInSlot: 2
+    ItemInSlot: {fileID: 0}
+  BehaviourSlot1:
+    ItemTypeInSlot: 3
+    ItemInSlot: {fileID: 0}
+  BehaviourSlot2:
+    ItemTypeInSlot: 3
+    ItemInSlot: {fileID: 0}
+  BehaviourSlot3:
+    ItemTypeInSlot: 3
+    ItemInSlot: {fileID: 0}
+  idle: {fileID: 0}
+  hit: {fileID: 0}
+  MainWeapon: {fileID: 0}
+  OffWeapon: {fileID: 0}
