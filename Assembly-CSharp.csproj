@@ -38,13 +38,13 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\AI\BrainManager.cs" />
      <Compile Include="Assets\Scripts\FighterTemplate.cs" />
-     <Compile Include="Assets\Scripts\PopupDamageController.cs" />
+     <Compile Include="Assets\Scripts\GUI\PopupDamageController.cs" />
      <Compile Include="Assets\Scripts\FSM\State_BasicMove.cs" />
      <Compile Include="Assets\Scripts\AI\BattleDataManager.cs" />
      <Compile Include="Assets\Scripts\ToolboxMovement.cs" />
-     <Compile Include="Assets\Scripts\GUIManager.cs" />
-     <Compile Include="Assets\Scripts\ButtonSpeedController.cs" />
-     <Compile Include="Assets\Scripts\HealthBarController.cs" />
+     <Compile Include="Assets\Scripts\GUI\GUIManager.cs" />
+     <Compile Include="Assets\Scripts\GUI\ButtonSpeedController.cs" />
+     <Compile Include="Assets\Scripts\GUI\HealthBarController.cs" />
      <Compile Include="Assets\Scripts\FSM\State_BasicHit.cs" />
      <Compile Include="Assets\Scripts\FSM\BaseState.cs" />
      <Compile Include="Assets\Scripts\ToolboxAttack.cs" />
@@ -58,6 +58,13 @@
      <Compile Include="Assets\PostProcess\PixelisationPPSSettings.cs" />
      <Compile Include="Assets\Scripts\FSM\FighterSM.cs" />
      <Compile Include="Assets\Scripts\BattleManager.cs" />
+     <Compile Include="Assets\Scripts\GUI\SlotEquipmentController.cs" />
+     <Compile Include="Assets\Scripts\ItemTemplate.cs" />
+     <Compile Include="Assets\Scripts\AI\Enums.cs" />
+     <Compile Include="Assets\Scripts\ToolboxEquipment.cs" />
+     <Compile Include="Assets\Scripts\ItemInventory.cs" />
+     <Compile Include="Assets\ButtonItemDisplay.cs" />
+     <Compile Include="Assets\Scripts\GUI\EquipmentScreenManager.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\Shaders\RampShader.shader" />
