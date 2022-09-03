@@ -289,6 +289,7 @@ GameObject:
   - component: {fileID: 5477945125456467886}
   - component: {fileID: 5477945125456467881}
   - component: {fileID: 5477945125456467880}
+  - component: {fileID: 2448181827312239526}
   m_Layer: 5
   m_Name: InventoryLayout
   m_TagString: Untagged
@@ -323,8 +324,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0039978027, y: -132.17896}
-  m_SizeDelta: {x: -0.005, y: 131.821}
+  m_AnchoredPosition: {x: -0.66119385, y: -132}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.2, y: 0}
 --- !u!222 &5477945125456467886
 CanvasRenderer:
@@ -388,6 +389,20 @@ MonoBehaviour:
   m_Spacing: {x: 2, y: 2}
   m_Constraint: 2
   m_ConstraintCount: 2
+--- !u!114 &2448181827312239526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5477945125456467882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
 --- !u!1001 &3413198518823879904
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -71,6 +71,7 @@ public class SlotEquipmentController : MonoBehaviour {
             ActiveSlot.DisplayedItem = button.DisplayedItem;
             ActiveSlot.UpdateDisplay();
             if (LinkedSlot != null) LinkedSlot.AssignItem(button.DisplayedItem);
+            SwitchInventoryDisplay();
         } else {
             SelectedInventoryButton = button;
         }

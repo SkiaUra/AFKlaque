@@ -8,6 +8,10 @@ public class ButtonItemDisplay : MonoBehaviour {
     public Image Sprite;
 
     public void UpdateDisplay() {
-        Sprite.sprite = DisplayedItem.Icon;
+        if (DisplayedItem) {
+            Sprite.sprite = DisplayedItem.Icon;
+        } else {
+            Sprite.sprite = null;
+        }
     }
 }
