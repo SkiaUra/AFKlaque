@@ -16,7 +16,7 @@ public class HealthBarController : MonoBehaviour {
     Tween Tween;
 
     void Update() {
-        CheckHealthChanges();
+        if (LinkedFighter) CheckHealthChanges();
     }
 
     void CheckHealthChanges() {

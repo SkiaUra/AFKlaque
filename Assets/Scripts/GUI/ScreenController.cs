@@ -1,8 +1,6 @@
 using UnityEngine;
 
 public class ScreenController : MonoBehaviour {
-    public ScreenType screen;
-
     public RectTransform rectTransform;
     public Vector2 resolution;
 

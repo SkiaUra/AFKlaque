@@ -13,7 +13,3 @@ public enum StatType {
     RANGE
 }
 
-public enum ScreenType {
-    EQUIPMENTSCREEN = 0,
-    LOBBYSCREEN = 1
-}
