@@ -6,6 +6,16 @@ using Sirenix.OdinInspector;
 
 public class BattleManager : MonoBehaviour {
 
+    public enum BattleManagerStates {
+        OFF = 0,
+        INIT,
+        BATTLE,
+        END
+    }
+    public BattleManagerStates BMState = 0;
+
+    [Header("Bindings")]
+    public GameMaster GameMaster;
     public GUIManager GUIManager;
     public GameObject FighterPrefabA;
     public GameObject FighterPrefabB;
@@ -22,7 +32,23 @@ public class BattleManager : MonoBehaviour {
     public FighterTemplate TestFighterB;
 
     void Start() {
-        NewBattle(TestFighterA, TestFighterB);
+
+    }
+
+    void Update() {
+        switch (BMState) {
+            case BattleManagerStates.OFF:
+
+                break;
+            case BattleManagerStates.INIT:
+                NewBattle(TestFighterA, TestFighterB);
+                break;
+            case BattleManagerStates.BATTLE:
+                break;
+            case BattleManagerStates.END:
+                ClearBattle();
+                break;
+        }
     }
 
     [Button("Start Battle")]
@@ -40,6 +66,15 @@ public class BattleManager : MonoBehaviour {
         GUIManager.PlayerHealthBar.SetupHealthBar(FighterA);
         GUIManager.EnemyHealthBar.SetupHealthBar(FighterB);
 
+        BMState = BattleManagerStates.BATTLE;
+    }
+
+    public void ClearBattle() {
+        if (FighterA) FighterA.KillEntity();
+        if (FighterB) FighterB.KillEntity();
+        FighterA = null;
+        FighterB = null;
+        BMState = BattleManagerStates.OFF;
     }
 
     public void SetGameSpeed(float _Speed) {
